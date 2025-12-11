@@ -101,27 +101,61 @@
                 
                 <!-- Texto do Produto 1 -->
                 <div class="w-full md:w-1/2 text-left">
-                    <span class="text-brand-blue font-bold tracking-wider text-sm uppercase mb-2 block">Lançamento</span>
+                    <span class="text-brand-blue font-bold tracking-wider text-sm uppercase mb-2 block">Coleções Exclusivas</span>
                     <h2 class="font-serif text-4xl text-brand-blue font-bold mb-6">Histórias Bíblicas <br>Exclusivas</h2>
-                    <p class="text-gray-600 text-lg mb-6 leading-relaxed">
-                        Mergulhe seus filhos na verdadeira essência das Escrituras. "O Menino que Mudou o Mundo" é obra que traz a narrativa do nascimento de Jesus com fidelidade bíblica e ilustrações que aquecem o coração.
+                    <p class="text-gray-600 text-lg mb-8 leading-relaxed">
+                        Mergulhe seus filhos na verdadeira essência das Escrituras com nossas coleções cuidadosamente curadas para tocar o coração e a mente dos pequeninos.
                     </p>
-                    <ul class="mb-8 space-y-3">
-                        <li class="flex items-center gap-3 text-gray-700">
-                            <i data-lucide="check-circle" class="text-green-500"></i> Texto 100% Bíblico
-                        </li>
-                        <li class="flex items-center gap-3 text-gray-700">
-                            <i data-lucide="check-circle" class="text-green-500"></i> Formato PDF Alta Resolução
-                        </li>
-                        <li class="flex items-center gap-3 text-gray-700">
-                            <i data-lucide="check-circle" class="text-green-500"></i> Ideal para leitura antes de dormir
-                        </li>
-                        <li class="flex items-center gap-3 text-gray-700">
-                            <i data-lucide="check-circle" class="text-green-500"></i> Novas histórias incluídas periodicamente
-                        </li>
-                    </ul>
+
+                    <!-- Coleção 1: O Menino que Mudou o Mundo -->
+                    <div class="bg-blue-50 p-5 rounded-xl mb-6 border-l-4 border-brand-gold">
+                        <h3 class="font-serif text-xl text-brand-blue font-bold mb-2">O Menino que Mudou o Mundo</h3>
+                        <p class="text-gray-600 text-sm mb-3">
+                            Narrativa do nascimento de Jesus com fidelidade bíblica e ilustrações que aquecem o coração. Ideal para leitura antes de dormir.
+                        </p>
+                        <div class="flex gap-2 mb-3 flex-wrap">
+                            <span class="text-xs bg-white px-3 py-1 rounded-full text-brand-blue font-semibold">Formato PDF</span>
+                            <span class="text-xs bg-white px-3 py-1 rounded-full text-brand-blue font-semibold">Alta Resolução</span>
+                        </div>
+                    </div>
+
+                    <!-- Coleção 2: Aprendendo a Orar -->
+                    <div class="bg-green-50 p-5 rounded-xl mb-6 border-l-4 border-green-500">
+                        <h3 class="font-serif text-xl text-brand-blue font-bold mb-2">Aprendendo a Orar</h3>
+                        <p class="text-gray-600 text-sm mb-3">
+                            Histórias que ensinam os pequeninos a orar desde a infância, desenvolvendo uma relação profunda e natural com Deus.
+                        </p>
+                        <div class="flex gap-2 flex-wrap">
+                            <span class="text-xs bg-white px-3 py-1 rounded-full text-green-600 font-semibold">Desenvolvimento Espiritual</span>
+                        </div>
+                    </div>
+
+                    <!-- Coleção 3: Tesouros do Coração -->
+                    <div class="bg-purple-50 p-5 rounded-xl mb-6 border-l-4 border-purple-500">
+                        <h3 class="font-serif text-xl text-brand-blue font-bold mb-2">Tesouros do Coração</h3>
+                        <p class="text-gray-600 text-sm mb-3">
+                            Histórias bíblicas que tratam as emoções das crianças (ansiedade, tristeza, alegria, gratidão) usando versículos bíblicos como base. A Bíblia ensinando como lidar com cada sentimento.
+                        </p>
+                        <div class="flex gap-2 flex-wrap">
+                            <span class="text-xs bg-white px-3 py-1 rounded-full text-purple-600 font-semibold">Inteligência Emocional</span>
+                            <span class="text-xs bg-white px-3 py-1 rounded-full text-purple-600 font-semibold">Versículos Bíblicos</span>
+                        </div>
+                    </div>
+
+                    <!-- Coleção 4: Histórias Bíblicas Ilustradas -->
+                    <div class="bg-orange-50 p-5 rounded-xl mb-8 border-l-4 border-orange-500">
+                        <h3 class="font-serif text-xl text-brand-blue font-bold mb-2">Histórias Bíblicas Ilustradas</h3>
+                        <p class="text-gray-600 text-sm mb-3">
+                            Histórias gerais sobre Jesus, Antigo Testamento e muito mais, com ilustrações que trazem vida aos personagens bíblicos.
+                        </p>
+                        <div class="flex gap-2 flex-wrap">
+                            <span class="text-xs bg-white px-3 py-1 rounded-full text-orange-600 font-semibold">Ilustrado</span>
+                            <span class="text-xs bg-white px-3 py-1 rounded-full text-orange-600 font-semibold">Personagens Bíblicos</span>
+                        </div>
+                    </div>
+
                     <a href="https://pay.cakto.com.br/3bnvjd5_668646" class="inline-block bg-brand-blue text-white px-8 py-3 rounded-lg font-bold shadow-lg hover:bg-blue-800 transition-all hover:shadow-xl transform hover:-translate-y-1">
-                        Quero Conhecer a História
+                        Explorar Todas as Coleções
                     </a>
                 </div>
             </div>
@@ -192,9 +226,9 @@
                                 </div>
                             </div>
 
-                            <a href="#" class="w-full block text-center bg-green-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-green-700 transition-all shadow-md hover:shadow-lg btn-pulse">
+                            <button type="button" disabled aria-disabled="true" title="Produto disponível em breve" class="w-full block text-center bg-gray-400 text-white px-8 py-4 rounded-xl font-bold text-lg opacity-80 cursor-not-allowed transition-all shadow-md">
                                 Quero Alfabetizar com a Bíblia
-                            </a>
+                            </button>
                         </div>
                     </div>
                 </div>
