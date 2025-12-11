@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Herdeiros da Promessa | Coleção Exclusiva</title>
+    
+    <!-- Importando Tailwind CSS (Framework de Estilo Moderno) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Importando Fontes do Google (Lora para títulos, Nunito para textos) -->
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Importando Ícones (Lucide) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Importando CSS Personalizado -->
+    <link rel="stylesheet" href="styles.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-gold': '#F2C94C',
+                        'brand-gold-dark': '#D4AF37',
+                        'brand-blue': '#2D5B87',
+                        'brand-cream': '#FDFBF7',
+                        'brand-text': '#4A4A4A',
+                    },
+                    fontFamily: {
+                        serif: ['Lora', 'serif'],
+                        sans: ['Nunito', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans text-brand-text paper-texture overflow-x-hidden">
+
+    <!-- Navegação Simples -->
+    <nav class="fixed w-full z-50 bg-brand-cream/90 backdrop-blur-sm shadow-sm py-4">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <i data-lucide="book-open" class="text-brand-gold-dark w-6 h-6"></i>
+                <span class="font-serif font-bold text-xl text-brand-blue tracking-wide">Herdeiros da Promessa</span>
+            </div>
+            <a href="#produtos" class="bg-brand-blue text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-blue-800 transition-colors">
+                Ver Coleção
+            </a>
+        </div>
+    </nav>
+
+    <!-- PARTE 1: Início / Hero Section -->
+    <header class="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-blue-900 to-brand-blue text-white pt-20">
+        <!-- Elementos decorativos (Estrelas) -->
+        <div class="absolute inset-0 pointer-events-none" id="stars-container"></div>
+        
+        <div class="container mx-auto px-6 z-10 text-center fade-in-section">
+            <div class="inline-block bg-brand-gold/20 px-4 py-1 rounded-full text-brand-gold text-sm font-bold mb-4 border border-brand-gold/40">
+                ✨ Educação Cristã com Amor
+            </div>
+            <h1 class="font-serif text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                Semeando a Palavra <br>nos <span class="text-brand-gold italic">Pequenos Corações</span>
+            </h1>
+            <p class="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto mb-10 leading-relaxed">
+                Bem-vindo ao universo Herdeiros da Promessa. Materiais exclusivos para ensinar a Bíblia de forma lúdica, fiel e encantadora.
+            </p>
+            
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <a href="#historia" class="bg-brand-gold text-blue-900 px-8 py-4 rounded-xl font-bold text-lg hover:bg-yellow-400 transition-all transform hover:-translate-y-1 shadow-lg btn-pulse flex items-center justify-center gap-2">
+                    <i data-lucide="star"></i> Conheça os Livros
+                </a>
+                <a href="#alfabetizacao" class="border-2 border-white/30 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/10 transition-all flex items-center justify-center gap-2">
+                    <i data-lucide="pencil"></i> Alfabetização
+                </a>
+            </div>
+        </div>
+
+        <!-- Onda decorativa na base -->
+        <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
+            <svg class="relative block w-[calc(100%+1.3px)] h-[100px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="fill-brand-cream"></path>
+            </svg>
+        </div>
+    </header>
+
+    <!-- Container Geral de Produtos -->
+    <main id="produtos" class="py-16 overflow-hidden">
+
+        <!-- PARTE 2: Histórias Bíblicas -->
+        <section id="historia" class="container mx-auto px-6 mb-24 fade-in-section">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <!-- Imagem do Produto 1 -->
+                <div class="w-full md:w-1/2 relative group">
+                    <div class="absolute -inset-2 bg-brand-gold rounded-2xl blur opacity-30 group-hover:opacity-60 transition duration-500"></div>
+                    <!-- SUBSTITUIR PELA IMAGEM: capa nova.jpg -->
+                    <img src="/pagina/files/01-capa.png" alt="Livro Histórias Bíblicas" class="relative rounded-2xl shadow-2xl w-full transform group-hover:scale-[1.01] transition duration-500 object-cover aspect-[4/3]">
+                </div>
+                
+                <!-- Texto do Produto 1 -->
+                <div class="w-full md:w-1/2 text-left">
+                    <span class="text-brand-blue font-bold tracking-wider text-sm uppercase mb-2 block">Lançamento</span>
+                    <h2 class="font-serif text-4xl text-brand-blue font-bold mb-6">Histórias Bíblicas <br>Exclusivas</h2>
+                    <p class="text-gray-600 text-lg mb-6 leading-relaxed">
+                        Mergulhe seus filhos na verdadeira essência das Escrituras. "O Menino que Mudou o Mundo" é obra que traz a narrativa do nascimento de Jesus com fidelidade bíblica e ilustrações que aquecem o coração.
+                    </p>
+                    <ul class="mb-8 space-y-3">
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <i data-lucide="check-circle" class="text-green-500"></i> Texto 100% Bíblico
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <i data-lucide="check-circle" class="text-green-500"></i> Formato PDF Alta Resolução
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <i data-lucide="check-circle" class="text-green-500"></i> Ideal para leitura antes de dormir
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <i data-lucide="check-circle" class="text-green-500"></i> Novas histórias incluídas periodicamente
+                        </li>
+                    </ul>
+                    <a href="https://pay.cakto.com.br/3bnvjd5_668646" class="inline-block bg-brand-blue text-white px-8 py-3 rounded-lg font-bold shadow-lg hover:bg-blue-800 transition-all hover:shadow-xl transform hover:-translate-y-1">
+                        Quero Conhecer a História
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Divisor Decorativo -->
+        <div class="w-full flex justify-center mb-24 opacity-20">
+            <i data-lucide="sparkles" class="text-brand-gold w-8 h-8"></i>
+        </div>
+
+        <!-- PARTE 3: Ilustrações Bíblicas -->
+        <section class="container mx-auto px-6 mb-24 fade-in-section">
+            <div class="flex flex-col md:flex-row-reverse items-center gap-12">
+                <!-- Imagem do Produto 2 -->
+                <div class="w-full md:w-1/2 relative group">
+                    <div class="absolute -inset-2 bg-blue-300 rounded-2xl blur opacity-30 group-hover:opacity-60 transition duration-500"></div>
+                    <!-- SUBSTITUIR PELA IMAGEM: pagina 2 novo.jpg (O Anjo) -->
+                    <img src="/pagina/files/capa horizontal.png" alt="Pack de Ilustrações" class="relative rounded-2xl shadow-2xl w-full transform group-hover:scale-[1.01] transition duration-500 object-cover aspect-[4/3]">
+                </div>
+                
+                <!-- Texto do Produto 2 -->
+                <div class="w-full md:w-1/2 text-left md:text-right">
+                    <span class="text-brand-gold-dark font-bold tracking-wider text-sm uppercase mb-2 block">Recurso Visual</span>
+                    <h2 class="font-serif text-4xl text-brand-blue font-bold mb-6">Ilustrações Bíblicas <br>Exclusivas</h2>
+                    <p class="text-gray-600 text-lg mb-6 leading-relaxed">
+                        Encante sua casa com lindas atividades bíblicas para seu filho pintar e se divertir. Arte que comunica a santidade e a beleza do Evangelho.
+                    </p>
+                    <a href="https://pay.cakto.com.br/tmz5ezi_668607" class="inline-block bg-brand-gold text-blue-900 px-8 py-3 rounded-lg font-bold shadow-lg hover:bg-yellow-400 transition-all hover:shadow-xl transform hover:-translate-y-1">
+                        Adquirir Coleção de Artes
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- PARTE 4: Alfabetização Bíblica -->
+        <section id="alfabetizacao" class="relative py-20 bg-white fade-in-section rounded-3xl mx-4 shadow-sm border border-gray-100">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col md:flex-row items-center gap-12">
+                    <!-- Imagem do Produto 3 -->
+                    <div class="w-full md:w-5/12">
+                        <div class="relative">
+                            <!-- Efeito de rotação suave no fundo -->
+                            <div class="absolute inset-0 bg-brand-gold/20 rounded-full transform rotate-3 scale-105 z-0"></div>
+                            <!-- SUBSTITUIR PELA IMAGEM: duvidas.jpg (Jesus pensando/ensinando) -->
+                            <img src="files/capa alfabe.png" alt="Alfabetização Bíblica" class="relative z-10 rounded-xl shadow-lg border-4 border-white mx-auto w-3/4 md:w-full">
+                        </div>
+                    </div>
+
+                    <!-- Texto do Produto 3 -->
+                    <div class="w-full md:w-7/12">
+                        <div class="bg-blue-50 p-8 rounded-2xl border border-blue-100">
+                            <h2 class="font-serif text-3xl md:text-4xl text-brand-blue font-bold mb-4">
+                                <i data-lucide="a-large-small" class="inline-block mr-2 w-8 h-8"></i>
+                                Alfabetização Bíblica
+                            </h2>
+                            <p class="text-gray-600 mb-6">
+                                Aprender a ler pode ser uma jornada espiritual. Unimos o método fônico à histórias da Bíblia para que seu filho aprenda as letras enquanto conhece os heróis da fé.
+                            </p>
+                            
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                                <div class="bg-white p-4 rounded-lg shadow-sm">
+                                    <h4 class="font-bold text-brand-blue">A de Amor</h4>
+                                    <p class="text-xs text-gray-500">Atividades de caligrafia</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg shadow-sm">
+                                    <h4 class="font-bold text-brand-blue">B de Bíblia</h4>
+                                    <p class="text-xs text-gray-500">Reconhecimento de letras</p>
+                                </div>
+                            </div>
+
+                            <a href="#" class="w-full block text-center bg-green-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-green-700 transition-all shadow-md hover:shadow-lg btn-pulse">
+                                Quero Alfabetizar com a Bíblia
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="bg-brand-blue text-white py-12 mt-12 border-t border-blue-800">
+        <div class="container mx-auto px-6 text-center">
+            <h3 class="font-serif text-2xl font-bold mb-4">Herdeiros da Promessa</h3>
+            <p class="text-blue-200 mb-8 max-w-md mx-auto">Criando memórias eternas através de histórias que transformam gerações.</p>
+            
+            <div class="flex justify-center gap-6 mb-8">
+                <a href="#" class="hover:text-brand-gold transition-colors"><i data-lucide="instagram" class="w-6 h-6"></i></a>
+                <a href="#" class="hover:text-brand-gold transition-colors"><i data-lucide="facebook" class="w-6 h-6"></i></a>
+                <a href="#" class="hover:text-brand-gold transition-colors"><i data-lucide="mail" class="w-6 h-6"></i></a>
+            </div>
+            
+            <p class="text-sm text-blue-300">
+                &copy; 2025 Herdeiros da Promessa. Todos os direitos reservados.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts de Funcionalidade -->
+    <script>
+        // Inicializa os ícones
+        lucide.createIcons();
+
+        // Script para gerar estrelas aleatórias no fundo do header
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('stars-container');
+            const starCount = 50;
+
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                
+                // Posição aleatória
+                const x = Math.random() * 100;
+                const y = Math.random() * 100;
+                const size = Math.random() * 3 + 1; // Tamanho entre 1px e 4px
+                const duration = Math.random() * 3 + 2; // Duração entre 2s e 5s
+                const delay = Math.random() * 5;
+
+                star.style.left = `${x}%`;
+                star.style.top = `${y}%`;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.animationDuration = `${duration}s`;
+                star.style.animationDelay = `${delay}s`;
+
+                container.appendChild(star);
+            }
+        });
+
+        // Script de "Scroll Reveal" (Aparecer ao rolar)
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target); // Para de observar depois que apareceu
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
