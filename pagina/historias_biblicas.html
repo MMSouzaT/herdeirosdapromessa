@@ -8,6 +8,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="styles.css">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'brand-gold': '#F2C94C',
+              'brand-gold-dark': '#D4AF37',
+              'brand-blue': '#2D5B87',
+              'brand-cream': '#FDFBF7',
+              'brand-text': '#4A4A4A',
+            },
+            fontFamily: {
+              serif: ['Lora', 'serif'],
+              sans: ['Nunito', 'sans-serif'],
+            }
+          }
+        }
+      }
+    </script>
 </head>
 <body class="font-sans text-brand-text paper-texture overflow-x-hidden">
 
@@ -89,7 +108,18 @@
 
 <footer class="bg-brand-blue text-white py-12 mt-12 border-t border-blue-800">
   <div class="container mx-auto px-6 text-center">
-    <p class="text-blue-200">&copy; 2025 Herdeiros da Promessa</p>
+    <h3 class="font-serif text-2xl font-bold mb-4">Herdeiros da Promessa</h3>
+    <p class="text-blue-200 mb-8 max-w-md mx-auto">Criando memórias eternas através de histórias que transformam gerações.</p>
+    
+    <div class="flex justify-center gap-6 mb-8">
+      <a href="https://www.instagram.com/herdeirosdapromessa.t/" target="_blank" class="hover:text-brand-gold transition-colors"><i data-lucide="instagram" class="w-6 h-6"></i></a>
+      <a href="https://www.facebook.com/profile.php?id=61584457560182" target="_blank" class="hover:text-brand-gold transition-colors"><i data-lucide="facebook" class="w-6 h-6"></i></a>
+      <a href="mailto:ternarius.lf@gmail.com" class="hover:text-brand-gold transition-colors"><i data-lucide="mail" class="w-6 h-6"></i></a>
+    </div>
+    
+    <p class="text-sm text-blue-300">
+      &copy; 2025 Herdeiros da Promessa. Todos os direitos reservados.
+    </p>
   </div>
 </footer>
 
