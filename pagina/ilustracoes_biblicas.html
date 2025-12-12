@@ -30,32 +30,7 @@
 </head>
 <body class="font-sans text-brand-text paper-texture overflow-x-hidden">
 
-<nav class="fixed w-full z-50 bg-brand-cream/90 backdrop-blur-sm shadow-sm py-4">
-  <div class="container mx-auto px-6 flex justify-between items-center">
-    <div class="flex items-center gap-2">
-      <i data-lucide="book-open" class="text-brand-gold-dark w-6 h-6"></i>
-      <a href="/produtos" class="font-serif font-bold text-xl text-brand-blue tracking-wide">Herdeiros da Promessa</a>
-    </div>
-
-    <div class="flex items-center gap-6">
-      <a href="/produtos" class="text-brand-blue hover:underline">Início</a>
-
-      <div class="relative group">
-        <button class="flex items-center gap-2 text-brand-blue">
-          Produtos
-          <i data-lucide="chevron-down" class="w-4 h-4"></i>
-        </button>
-        <div class="absolute right-0 mt-2 w-56 bg-white rounded-md shadow-lg opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-opacity">
-          <a href="/historias_biblicas" class="block px-4 py-2 text-brand-blue hover:bg-gray-100">Histórias bíblicas</a>
-          <a href="/ilustracoes_biblicas" class="block px-4 py-2 text-brand-blue hover:bg-gray-100">Ilustrações bíblicas</a>
-        </div>
-      </div>
-
-      <a href="/sobre-nos" class="text-brand-blue hover:underline">Sobre nós</a>
-      <a href="/contato" class="text-brand-blue hover:underline">Contato</a>
-    </div>
-  </div>
-</nav>
+<div data-include="nav"></div>
 
 <header class="relative min-h-[280px] flex items-center justify-center bg-gradient-to-b from-blue-900 to-brand-blue text-white pt-20 pb-12">
   <div class="container mx-auto px-6 text-center">
@@ -113,6 +88,7 @@
   </div>
 </footer>
 
+<script src="/pagina/js/load-nav.js"></script>
 <script>
   lucide.createIcons();
   const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('is-visible'); }); }, {threshold:0.1});
