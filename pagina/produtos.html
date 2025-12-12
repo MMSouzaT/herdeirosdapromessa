@@ -41,16 +41,31 @@
 </head>
 <body class="font-sans text-brand-text paper-texture overflow-x-hidden">
 
-    <!-- Navegação Simples -->
+    <!-- Navegação Principal -->
     <nav class="fixed w-full z-50 bg-brand-cream/90 backdrop-blur-sm shadow-sm py-4">
         <div class="container mx-auto px-6 flex justify-between items-center">
             <div class="flex items-center gap-2">
                 <i data-lucide="book-open" class="text-brand-gold-dark w-6 h-6"></i>
-                <span class="font-serif font-bold text-xl text-brand-blue tracking-wide">Herdeiros da Promessa</span>
+                <a href="/produtos" class="font-serif font-bold text-xl text-brand-blue tracking-wide">Herdeiros da Promessa</a>
             </div>
-            <a href="#produtos" class="bg-brand-blue text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-blue-800 transition-colors">
-                Ver Coleção
-            </a>
+
+            <div class="flex items-center gap-6">
+                <a href="/produtos" class="text-brand-blue hover:underline">Início</a>
+
+                <div class="relative group">
+                    <button class="flex items-center gap-2 text-brand-blue">
+                        Produtos
+                        <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                    </button>
+                    <div class="absolute right-0 mt-2 w-56 bg-white rounded-md shadow-lg opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-opacity">
+                        <a href="/historias_biblicas" class="block px-4 py-2 text-brand-blue hover:bg-gray-100">Histórias bíblicas</a>
+                        <a href="/ilustracoes_biblicas" class="block px-4 py-2 text-brand-blue hover:bg-gray-100">Ilustrações bíblicas</a>
+                    </div>
+                </div>
+
+                <a href="/sobre-nos" class="text-brand-blue hover:underline">Sobre nós</a>
+                <a href="/contato" class="text-brand-blue hover:underline">Contato</a>
+            </div>
         </div>
     </nav>
 
@@ -157,7 +172,7 @@
                     </div>
 
                     <a href="https://pay.cakto.com.br/3bnvjd5_668646" class="inline-block bg-brand-blue text-white px-8 py-3 rounded-lg font-bold shadow-lg hover:bg-blue-800 transition-all hover:shadow-xl transform hover:-translate-y-1">
-                        Explorar Todas as Coleções
+                        Adquira Todas as Coleções
                     </a>
                 </div>
             </div>
