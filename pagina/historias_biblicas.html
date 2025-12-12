@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histórias Bíblicas — Herdeiros da Promessa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="font-sans text-brand-text paper-texture overflow-x-hidden">
+
+<nav class="fixed w-full z-50 bg-brand-cream/90 backdrop-blur-sm shadow-sm py-4">
+  <div class="container mx-auto px-6 flex justify-between items-center">
+    <div class="flex items-center gap-2">
+      <i data-lucide="book-open" class="text-brand-gold-dark w-6 h-6"></i>
+      <a href="/produtos" class="font-serif font-bold text-xl text-brand-blue tracking-wide">Herdeiros da Promessa</a>
+    </div>
+    <div class="flex items-center gap-3">
+      <a href="/produtos" class="bg-brand-blue text-white px-4 py-2 rounded-full text-sm font-semibold">Voltar aos Produtos</a>
+    </div>
+  </div>
+</nav>
+
+<header class="relative min-h-[280px] flex items-center justify-center bg-gradient-to-b from-blue-900 to-brand-blue text-white pt-20 pb-12">
+  <div class="container mx-auto px-6 text-center">
+    <h1 class="font-serif text-4xl md:text-5xl font-bold mb-4">Histórias Bíblicas — Detalhes</h1>
+    <p class="max-w-2xl mx-auto text-blue-100">Aqui você encontra mais informações sobre as nossas coleções de histórias bíblicas: conteúdo, objetivos pedagógicos e público-alvo.</p>
+  </div>
+</header>
+
+<main class="container mx-auto px-6 py-12">
+  <section class="mb-10 fade-in-section">
+    <h2 class="font-serif text-2xl text-brand-blue font-bold mb-4">O Menino que Mudou o Mundo</h2>
+    <div class="flex flex-col md:flex-row gap-8 items-start">
+      <img src="/pagina/files/01-capa.png" alt="Capa O Menino" class="w-full md:w-1/3 rounded-xl shadow-lg object-cover">
+      <div class="md:flex-1">
+        <p class="text-gray-600 mb-4">Uma narrativa sensível e fiel sobre o nascimento de Jesus, escrita para crianças. Texto alinhado com as Escrituras e com ilustrações que ajudam a internalizar a mensagem.</p>
+        <h3 class="font-bold text-brand-blue mb-2">O que inclui</h3>
+        <ul class="list-disc ml-5 text-gray-700 mb-4">
+          <li>História completa com linguagem acessível</li>
+          <li>Ilustrações coloridas e pensadas para crianças pequenas</li>
+          <li>Versículos de apoio e sugestões de aplicação</li>
+        </ul>
+        <a href="https://pay.cakto.com.br/3bnvjd5_668646" class="inline-block bg-brand-blue text-white px-6 py-3 rounded-lg font-bold">Quero Conhecer</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="mb-10 fade-in-section">
+    <h2 class="font-serif text-2xl text-brand-blue font-bold mb-4">Aprendendo a Orar</h2>
+    <div class="bg-green-50 p-6 rounded-xl border-l-4 border-green-500">
+      <p class="text-gray-700 mb-4">Coleção dedicada a introduzir a prática da oração na vida das crianças, com histórias curtas que modelam diferentes tipos de oração (gratidao, pedido, louvor, confissão).</p>
+      <p class="text-gray-700 mb-4">Objetivos pedagógicos: cultivar intimidade com Deus, ensinar formatos simples de oração e incentivar a prática diária.</p>
+      <div class="flex gap-3">
+        <a href="#" class="bg-green-600 text-white px-4 py-2 rounded-md">Em breve</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="mb-10 fade-in-section">
+    <h2 class="font-serif text-2xl text-brand-blue font-bold mb-4">Tesouros do Coração</h2>
+    <p class="text-gray-700 mb-4">Série que ajuda as crianças a identificar e nomear emoções (ansiedade, tristeza, alegria, gratidão) através de histórias fundamentadas em versículos bíblicos.</p>
+    <p class="text-gray-700">Inclui atividades para pais e professores, perguntas de reflexão e versículos de apoio para cada tema emocional.</p>
+  </section>
+
+  <section class="fade-in-section">
+    <h2 class="font-serif text-2xl text-brand-blue font-bold mb-4">Público-alvo e formatos</h2>
+    <p class="text-gray-700 mb-4">Indicadas para crianças de 0 a 8 anos, nossas histórias são disponibilizadas em PDF em alta resolução e em formatos otimizados para leitura em dispositivos móveis e impressão.</p>
+    <p class="text-gray-700">Se quiser adquirir, acesse a página de produtos ou entre em contato conosco.</p>
+  </section>
+</main>
+
+<footer class="bg-brand-blue text-white py-12 mt-12 border-t border-blue-800">
+  <div class="container mx-auto px-6 text-center">
+    <p class="text-blue-200">&copy; 2025 Herdeiros da Promessa</p>
+  </div>
+</footer>
+
+<script>
+  lucide.createIcons();
+  const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('is-visible'); }); }, {threshold:0.1});
+  document.querySelectorAll('.fade-in-section').forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
