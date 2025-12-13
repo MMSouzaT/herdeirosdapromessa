@@ -69,13 +69,15 @@
             </div>
         </div>
 
-        <!-- Onda decorativa na base -->
-        <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
-            <svg class="relative block w-[calc(100%+1.3px)] h-[100px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="fill-brand-cream"></path>
-            </svg>
-        </div>
+        <!-- Onda decorativa removida do header e colocada em fluxo abaixo -->
     </header>
+
+    <!-- Onda decorativa entre header e main (em fluxo, evita sobreposição) -->
+    <div class="w-full overflow-hidden leading-none">
+        <svg class="block w-[calc(100%+1.3px)] h-[100px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="fill-brand-cream"></path>
+        </svg>
+    </div>
 
     <!-- Container Geral de Produtos -->
     <main id="produtos" class="py-16 overflow-hidden">
@@ -98,56 +100,65 @@
                         Mergulhe seus filhos na verdadeira essência das Escrituras com nossas coleções cuidadosamente curadas para tocar o coração e a mente dos pequeninos.
                     </p>
 
-                    <!-- Coleção 1: O Menino que Mudou o Mundo -->
-                    <div class="bg-blue-50 p-5 rounded-xl mb-6 border-l-4 border-brand-gold">
-                        <h3 class="font-serif text-xl text-brand-blue font-bold mb-2">O Menino que Mudou o Mundo</h3>
-                        <p class="text-gray-600 text-sm mb-3">
-                            Narrativa do nascimento de Jesus com fidelidade bíblica e ilustrações que aquecem o coração. Ideal para leitura antes de dormir.
-                        </p>
-                        <div class="flex gap-2 mb-3 flex-wrap">
-                            <span class="text-xs bg-white px-3 py-1 rounded-full text-brand-blue font-semibold">Formato PDF</span>
-                            <span class="text-xs bg-white px-3 py-1 rounded-full text-brand-blue font-semibold">Alta Resolução</span>
+                    <!-- Carousel: mostre uma coleção por vez (autoplay + controles) -->
+                    <div class="relative">
+                        <div id="historia-carousel" class="w-full">
+                            <div class="slide bg-blue-50 p-5 rounded-xl mb-6 border-l-4 border-brand-gold">
+                                <h3 class="font-serif text-xl text-brand-blue font-bold mb-2">O Menino que Mudou o Mundo</h3>
+                                <p class="text-gray-600 text-sm mb-3">Narrativa do nascimento de Jesus com fidelidade bíblica e ilustrações que aquecem o coração. Ideal para leitura antes de dormir.</p>
+                                <div class="flex gap-2 mb-3 flex-wrap">
+                                    <span class="text-xs bg-white px-3 py-1 rounded-full text-brand-blue font-semibold">Formato PDF</span>
+                                    <span class="text-xs bg-white px-3 py-1 rounded-full text-brand-blue font-semibold">Alta Resolução</span>
+                                </div>
+                            </div>
+
+                            <div class="slide hidden bg-green-50 p-5 rounded-xl mb-6 border-l-4 border-green-500">
+                                <h3 class="font-serif text-xl text-brand-blue font-bold mb-2">Aprendendo a Orar</h3>
+                                <p class="text-gray-600 text-sm mb-3">Histórias que ensinam os pequeninos a orar desde a infância, desenvolvendo uma relação profunda e natural com Deus.</p>
+                                <div class="flex gap-2 flex-wrap">
+                                    <span class="text-xs bg-white px-3 py-1 rounded-full text-green-600 font-semibold">Desenvolvimento Espiritual</span>
+                                </div>
+                            </div>
+
+                            <div class="slide hidden bg-purple-50 p-5 rounded-xl mb-6 border-l-4 border-purple-500">
+                                <h3 class="font-serif text-xl text-brand-blue font-bold mb-2">Tesouros do Coração</h3>
+                                <p class="text-gray-600 text-sm mb-3">Histórias bíblicas que tratam as emoções das crianças (ansiedade, tristeza, alegria, gratidão) usando versículos bíblicos como base.</p>
+                                <div class="flex gap-2 flex-wrap">
+                                    <span class="text-xs bg-white px-3 py-1 rounded-full text-purple-600 font-semibold">Inteligência Emocional</span>
+                                    <span class="text-xs bg-white px-3 py-1 rounded-full text-purple-600 font-semibold">Versículos Bíblicos</span>
+                                </div>
+                            </div>
+
+                            <div class="slide hidden bg-orange-50 p-5 rounded-xl mb-6 border-l-4 border-orange-500">
+                                <h3 class="font-serif text-xl text-brand-blue font-bold mb-2">Histórias Bíblicas Ilustradas</h3>
+                                <p class="text-gray-600 text-sm mb-3">Histórias gerais sobre Jesus, Antigo Testamento e muito mais, com ilustrações que trazem vida aos personagens bíblicos.</p>
+                                <div class="flex gap-2 flex-wrap">
+                                    <span class="text-xs bg-white px-3 py-1 rounded-full text-orange-600 font-semibold">Ilustrado</span>
+                                    <span class="text-xs bg-white px-3 py-1 rounded-full text-orange-600 font-semibold">Personagens Bíblicos</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 flex items-center gap-3">
+                            <button id="hist-prev" class="bg-white/90 text-brand-blue px-4 py-2 rounded-lg shadow-sm hover:opacity-100 opacity-90">Anterior</button>
+                            <div class="flex-1"></div>
+                            <button id="hist-next" class="bg-white/90 text-brand-blue px-4 py-2 rounded-lg shadow-sm hover:opacity-100 opacity-90">Próxima</button>
+                        </div>
+
+                        <div id="hist-dots" class="mt-3 flex gap-2 justify-center"></div>
+
+                        <div class="mt-6">
+                            <div class="flex flex-col gap-4">
+                                <a href="https://pay.cakto.com.br/3bnvjd5_668646" target="_blank" class="w-full text-center bg-brand-blue text-white px-8 py-3 rounded-lg font-bold shadow-lg hover:bg-blue-800 transition-all hover:shadow-xl transform hover:-translate-y-1">
+                                    Adquira Todas as Coleções
+                                </a>
+
+                                <a href="https://drive.google.com/file/d/1YduedSeFQeXgBFhkUqgZZuyT7xnNqbcQ/view" target="_blank" class="w-full text-center bg-brand-gold text-blue-900 px-8 py-3 rounded-lg font-bold shadow-lg hover:bg-yellow-400 transition-all hover:shadow-xl transform hover:-translate-y-1">
+                                    Adquirir meu e-book gratuíto do mês!
+                                </a>
+                            </div>
                         </div>
                     </div>
-
-                    <!-- Coleção 2: Aprendendo a Orar -->
-                    <div class="bg-green-50 p-5 rounded-xl mb-6 border-l-4 border-green-500">
-                        <h3 class="font-serif text-xl text-brand-blue font-bold mb-2">Aprendendo a Orar</h3>
-                        <p class="text-gray-600 text-sm mb-3">
-                            Histórias que ensinam os pequeninos a orar desde a infância, desenvolvendo uma relação profunda e natural com Deus.
-                        </p>
-                        <div class="flex gap-2 flex-wrap">
-                            <span class="text-xs bg-white px-3 py-1 rounded-full text-green-600 font-semibold">Desenvolvimento Espiritual</span>
-                        </div>
-                    </div>
-
-                    <!-- Coleção 3: Tesouros do Coração -->
-                    <div class="bg-purple-50 p-5 rounded-xl mb-6 border-l-4 border-purple-500">
-                        <h3 class="font-serif text-xl text-brand-blue font-bold mb-2">Tesouros do Coração</h3>
-                        <p class="text-gray-600 text-sm mb-3">
-                            Histórias bíblicas que tratam as emoções das crianças (ansiedade, tristeza, alegria, gratidão) usando versículos bíblicos como base. A Bíblia ensinando como lidar com cada sentimento.
-                        </p>
-                        <div class="flex gap-2 flex-wrap">
-                            <span class="text-xs bg-white px-3 py-1 rounded-full text-purple-600 font-semibold">Inteligência Emocional</span>
-                            <span class="text-xs bg-white px-3 py-1 rounded-full text-purple-600 font-semibold">Versículos Bíblicos</span>
-                        </div>
-                    </div>
-
-                    <!-- Coleção 4: Histórias Bíblicas Ilustradas -->
-                    <div class="bg-orange-50 p-5 rounded-xl mb-8 border-l-4 border-orange-500">
-                        <h3 class="font-serif text-xl text-brand-blue font-bold mb-2">Histórias Bíblicas Ilustradas</h3>
-                        <p class="text-gray-600 text-sm mb-3">
-                            Histórias gerais sobre Jesus, Antigo Testamento e muito mais, com ilustrações que trazem vida aos personagens bíblicos.
-                        </p>
-                        <div class="flex gap-2 flex-wrap">
-                            <span class="text-xs bg-white px-3 py-1 rounded-full text-orange-600 font-semibold">Ilustrado</span>
-                            <span class="text-xs bg-white px-3 py-1 rounded-full text-orange-600 font-semibold">Personagens Bíblicos</span>
-                        </div>
-                    </div>
-
-                    <a href="https://pay.cakto.com.br/3bnvjd5_668646" class="inline-block bg-brand-blue text-white px-8 py-3 rounded-lg font-bold shadow-lg hover:bg-blue-800 transition-all hover:shadow-xl transform hover:-translate-y-1">
-                        Adquira Todas as Coleções
-                    </a>
                 </div>
             </div>
         </section>
@@ -174,7 +185,7 @@
                     <p class="text-gray-600 text-lg mb-6 leading-relaxed">
                         Encante sua casa com lindas atividades bíblicas para seu filho pintar e se divertir. Arte que comunica a santidade e a beleza do Evangelho.
                     </p>
-                    <a href="https://pay.cakto.com.br/tmz5ezi_668607" class="inline-block bg-brand-gold text-blue-900 px-8 py-3 rounded-lg font-bold shadow-lg hover:bg-yellow-400 transition-all hover:shadow-xl transform hover:-translate-y-1">
+                    <a href="https://pay.cakto.com.br/tmz5ezi_668607" target="_blank" class="inline-block bg-brand-gold text-blue-900 px-8 py-3 rounded-lg font-bold shadow-lg hover:bg-yellow-400 transition-all hover:shadow-xl transform hover:-translate-y-1">
                         Adquirir Coleção de Artes
                     </a>
                 </div>
@@ -312,6 +323,59 @@
         document.querySelectorAll('.fade-in-section').forEach(section => {
             observer.observe(section);
         });
+
+        // Carousel para a seção 'Histórias Bíblicas'
+        (function(){
+            const slides = Array.from(document.querySelectorAll('#historia-carousel .slide'));
+            if (!slides.length) return;
+            let idx = 0;
+            const nextBtn = document.getElementById('hist-next');
+            const prevBtn = document.getElementById('hist-prev');
+            const dotsWrap = document.getElementById('hist-dots');
+            let autoplayInterval = 5000;
+            let timer = null;
+
+            function show(i){
+                slides.forEach((s, k) => {
+                    s.classList.toggle('hidden', k !== i);
+                });
+                // atualizar dots
+                if (dotsWrap) {
+                    dotsWrap.querySelectorAll('button').forEach((b, k) => b.classList.toggle('opacity-50', k !== i));
+                }
+                idx = i;
+            }
+
+            function next(){ show((idx + 1) % slides.length); }
+            function prev(){ show((idx - 1 + slides.length) % slides.length); }
+
+            // criar dots
+            if (dotsWrap) {
+                slides.forEach((_, k) => {
+                    const b = document.createElement('button');
+                    b.className = 'w-3 h-3 rounded-full bg-brand-blue/80 hover:opacity-80 transition-opacity';
+                    if (k !== idx) b.classList.add('opacity-50');
+                    b.addEventListener('click', () => { show(k); resetTimer(); });
+                    dotsWrap.appendChild(b);
+                });
+            }
+
+            if (nextBtn) nextBtn.addEventListener('click', () => { next(); resetTimer(); });
+            if (prevBtn) prevBtn.addEventListener('click', () => { prev(); resetTimer(); });
+
+            function startTimer(){ timer = setInterval(next, autoplayInterval); }
+            function resetTimer(){ clearInterval(timer); startTimer(); }
+
+            // pause on hover
+            const carouselEl = document.getElementById('historia-carousel');
+            if (carouselEl){
+                carouselEl.addEventListener('mouseenter', () => clearInterval(timer));
+                carouselEl.addEventListener('mouseleave', () => startTimer());
+            }
+
+            show(0);
+            startTimer();
+        })();
     </script>
 </body>
 </html>
