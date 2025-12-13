@@ -28,6 +28,31 @@ document.addEventListener('DOMContentLoaded', () => {
           if (menuCloseIcon) menuCloseIcon.classList.toggle('hidden');
         });
       }
+
+      // Gerenciar dropdown de Produtos no desktop
+      const produtosBtn = el.querySelector('#produtos-btn');
+      const produtosMenu = el.querySelector('#produtos-menu');
+      const produtosDropdown = el.querySelector('#produtos-dropdown');
+
+      if (produtosBtn && produtosMenu && produtosDropdown) {
+        // Abrir/fechar ao clicar no botão
+        produtosBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const isOpen = !produtosMenu.classList.contains('opacity-0');
+          if (isOpen) {
+            produtosMenu.classList.add('opacity-0', 'invisible', 'pointer-events-none');
+          } else {
+            produtosMenu.classList.remove('opacity-0', 'invisible', 'pointer-events-none');
+          }
+        });
+
+        // Fechar ao clicar fora
+        document.addEventListener('click', (e) => {
+          if (!produtosDropdown.contains(e.target)) {
+            produtosMenu.classList.add('opacity-0', 'invisible', 'pointer-events-none');
+          }
+        });
+      }
     } catch (err) {
       console.error('Error loading nav include:', err);
     }

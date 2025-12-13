@@ -14,12 +14,12 @@
         <div class="hidden md:flex items-center gap-6">
             <a href="/produtos" class="text-brand-blue hover:underline">Início</a>
 
-            <div class="relative group">
-                <button class="flex items-center gap-2 text-brand-blue">
+            <div class="relative" id="produtos-dropdown">
+                <button id="produtos-btn" class="flex items-center gap-2 text-brand-blue hover:text-brand-gold-dark transition-colors">
                     Produtos
                     <i data-lucide="chevron-down" class="w-4 h-4"></i>
                 </button>
-                <div class="absolute right-0 mt-2 w-56 bg-white rounded-md shadow-lg opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-opacity">
+                <div id="produtos-menu" class="absolute right-0 mt-2 w-56 bg-white rounded-md shadow-lg opacity-0 invisible transition-opacity pointer-events-none">
                     <a href="/historias_biblicas" class="block px-4 py-2 text-brand-blue hover:bg-gray-100">Histórias bíblicas</a>
                     <a href="/ilustracoes_biblicas" class="block px-4 py-2 text-brand-blue hover:bg-gray-100">Ilustrações bíblicas</a>
                 </div>
@@ -34,8 +34,9 @@
             <div class="px-6 py-4 flex flex-col gap-2">
                 <a href="/produtos" class="block text-brand-blue py-2">Início</a>
                 <div class="border-t border-gray-200"></div>
-                <a href="/historias_biblicas" class="block text-brand-blue py-2">Histórias bíblicas</a>
-                <a href="/ilustracoes_biblicas" class="block text-brand-blue py-2">Ilustrações bíblicas</a>
+                <span class="block text-brand-blue font-bold py-2">Produtos</span>
+                <a href="/historias_biblicas" class="block text-brand-blue py-2 pl-4">Histórias bíblicas</a>
+                <a href="/ilustracoes_biblicas" class="block text-brand-blue py-2 pl-4">Ilustrações bíblicas</a>
                 <div class="border-t border-gray-200"></div>
                 <a href="/sobre-nos" class="block text-brand-blue py-2">Sobre nós</a>
                 <a href="/contato" class="block text-brand-blue py-2">Contato</a>
