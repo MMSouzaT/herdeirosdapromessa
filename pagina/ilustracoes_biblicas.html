@@ -34,41 +34,312 @@
 
 <header class="relative min-h-[280px] flex items-center justify-center bg-gradient-to-b from-blue-900 to-brand-blue text-white pt-20 pb-12">
   <div class="container mx-auto px-6 text-center">
-    <h1 class="font-serif text-4xl md:text-5xl font-bold mb-4">Ilustrações Bíblicas — Detalhes</h1>
-    <p class="max-w-2xl mx-auto text-blue-100">Informações detalhadas sobre as coleções de ilustrações e como usá-las em atividades educativas.</p>
+    <h1 class="font-serif text-4xl md:text-5xl font-bold mb-4">Ilustrações Bíblicas</h1>
+    <p class="max-w-2xl mx-auto text-blue-100">Recursos visuais de qualidade para ensinar verdades eternas de forma criativa e envolvente.</p>
   </div>
 </header>
 
 <main class="container mx-auto px-6 py-12">
-  <section class="mb-10 fade-in-section">
-    <h2 class="font-serif text-2xl text-brand-blue font-bold mb-4">Coleção de Ilustrações</h2>
-    <div class="flex flex-col md:flex-row gap-8">
-      <div class="md:w-1/3">
-        <img src="/pagina/files/capa horizontal.png" alt="Ilustrações" class="rounded-xl shadow-lg object-cover w-full">
+  
+  <!-- Bloco 1: Herdeiros da Promessa Ilustrações -->
+  <section class="mb-16 fade-in-section">
+    <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
+      <!-- Carrossel de Imagens -->
+      <div class="relative bg-gray-100">
+        <div id="carousel-ilustracoes-1" class="relative h-[400px] md:h-[500px]">
+          <div class="carousel-slide active flex items-center justify-center h-full p-4">
+            <img src="/pagina/files/ilustracoes_biblicas/livros_ilustrados/l1_herdeiros.png" alt="Herdeiros da Promessa" class="max-h-full max-w-full object-contain">
+          </div>
+          <div class="carousel-slide hidden flex items-center justify-center h-full p-4">
+            <img src="/pagina/files/ilustracoes_biblicas/livros_ilustrados/colorindo com proposito.png" alt="Colorindo com Propósito" class="max-h-full max-w-full object-contain">
+          </div>
+        </div>
+        
+        <!-- Controles do Carrossel -->
+        <button onclick="prevSlide('carousel-ilustracoes-1')" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-brand-blue p-3 rounded-full shadow-lg transition-all">
+          <i data-lucide="chevron-left" class="w-6 h-6"></i>
+        </button>
+        <button onclick="nextSlide('carousel-ilustracoes-1')" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-brand-blue p-3 rounded-full shadow-lg transition-all">
+          <i data-lucide="chevron-right" class="w-6 h-6"></i>
+        </button>
       </div>
-      <div class="md:flex-1">
-        <p class="text-gray-700 mb-4">Pack de ilustrações para uso em atividades de pintura, material impresso e recursos visuais para aulas. Cada ilustração vem com orientação de uso e sugestões de atividades.</p>
-        <h3 class="font-bold text-brand-blue mb-2">Inclui</h3>
-        <ul class="list-disc ml-5 text-gray-700 mb-4">
-          <li>Arquivos em alta resolução (PDF e PNG)</li>
-          <li>Versões para impressão e versão digital interativa</li>
-          <li>Guias de atividades e propostas pedagógicas</li>
-        </ul>
-        <a href="https://pay.cakto.com.br/tmz5ezi_668607" class="inline-block bg-brand-gold text-blue-900 px-6 py-3 rounded-lg font-bold">Adquirir Coleção</a>
+
+      <!-- Conteúdo Descritivo -->
+      <div class="p-8 md:p-12">
+        <h2 class="font-serif text-3xl md:text-4xl text-brand-blue font-bold mb-4">Herdeiros da Promessa Ilustrações</h2>
+        <p class="text-lg text-gray-700 mb-6 leading-relaxed">
+          Uma coleção completa de ilustrações bíblicas cuidadosamente desenvolvidas para enriquecer suas aulas, cultos infantis e momentos de ensino. 
+          Cada ilustração foi criada com atenção aos detalhes e com propósito pedagógico, transformando histórias bíblicas em experiências visuais marcantes.
+        </p>
+
+        <div class="bg-blue-50 border-l-4 border-brand-blue p-6 rounded-lg mb-6">
+          <h3 class="font-bold text-brand-blue mb-3 text-lg">✨ O que você vai receber:</h3>
+          <ul class="space-y-2 text-gray-700">
+            <li class="flex items-start">
+              <span class="text-brand-gold mr-2">•</span>
+              <span>Ilustrações em alta resolução (PDF e PNG)</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-brand-gold mr-2">•</span>
+              <span>Versões prontas para impressão e uso digital</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-brand-gold mr-2">•</span>
+              <span>Guias de atividades e sugestões pedagógicas</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-brand-gold mr-2">•</span>
+              <span>Licença para uso pessoal e ministerial</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="mb-6">
+          <h3 class="font-bold text-brand-blue mb-3 text-lg">🎯 Perfeito para:</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="bg-blue-100 text-brand-blue px-4 py-2 rounded-full text-sm font-semibold">Professores de EBD</span>
+            <span class="bg-blue-100 text-brand-blue px-4 py-2 rounded-full text-sm font-semibold">Líderes de Ministério Infantil</span>
+            <span class="bg-blue-100 text-brand-blue px-4 py-2 rounded-full text-sm font-semibold">Pais Educadores</span>
+            <span class="bg-blue-100 text-brand-blue px-4 py-2 rounded-full text-sm font-semibold">Contadores de Histórias</span>
+          </div>
+        </div>
+
+        <div class="flex justify-center">
+          <a href="#secao-final" class="inline-flex items-center justify-center bg-brand-gold hover:bg-brand-gold-dark text-blue-900 px-8 py-4 rounded-lg font-bold text-lg transition-all shadow-lg hover:shadow-xl">
+            <i data-lucide="shopping-cart" class="w-5 h-5 mr-2"></i>
+            Adquirir Coleção
+          </a>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="mb-8 fade-in-section">
-    <h2 class="font-serif text-2xl text-brand-blue font-bold mb-4">Como usar em sala e em casa</h2>
-    <p class="text-gray-700 mb-4">Sugestões práticas: atividades de pintura guiada, jogos de memória com imagens, contação de histórias utilizando as ilustrações como suporte visual.</p>
-    <p class="text-gray-700">Materiais ideais para professores, líderes de ministério infantil e pais que desejam recursos visuais de qualidade.</p>
+  <!-- Bloco 2: Atividades de Aprendizado -->
+  <section class="mb-16 fade-in-section">
+    <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
+      <!-- Carrossel de Imagens -->
+      <div class="relative bg-gray-100">
+        <div id="carousel-ilustracoes-2" class="relative h-[400px] md:h-[500px]">
+          <div class="carousel-slide active flex items-center justify-center h-full p-4">
+            <img src="/pagina/files/ilustracoes_biblicas/atividades_aprendizado/alfabeto biblico.png" alt="Alfabeto bíblico" class="max-h-full max-w-full object-contain">
+          </div>
+          <div class="carousel-slide hidden flex items-center justify-center h-full p-4">
+            <img src="/pagina/files/ilustracoes_biblicas/atividades_aprendizado/aprendendo com alegria.png" alt="Aprendendo com Alegria" class="max-h-full max-w-full object-contain">
+          </div>          
+        </div>
+        
+        <!-- Controles do Carrossel -->
+        <button onclick="prevSlide('carousel-ilustracoes-2')" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-brand-blue p-3 rounded-full shadow-lg transition-all">
+          <i data-lucide="chevron-left" class="w-6 h-6"></i>
+        </button>
+        <button onclick="nextSlide('carousel-ilustracoes-2')" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-brand-blue p-3 rounded-full shadow-lg transition-all">
+          <i data-lucide="chevron-right" class="w-6 h-6"></i>
+        </button>
+      </div>
+
+      <!-- Conteúdo Descritivo -->
+      <div class="p-8 md:p-12">
+        <h2 class="font-serif text-3xl md:text-4xl text-green-700 font-bold mb-4">Atividades de Aprendizado</h2>
+        <p class="text-lg text-gray-700 mb-6 leading-relaxed">
+          Transforme o aprendizado bíblico em momentos interativos e divertidos! Esta coleção oferece atividades práticas que complementam 
+          as ilustrações, promovendo fixação do conteúdo através de colorir, recortar, montar e criar.
+        </p>
+
+        <div class="bg-green-50 border-l-4 border-green-600 p-6 rounded-lg mb-6">
+          <h3 class="font-bold text-green-700 mb-3 text-lg">📚 Inclui:</h3>
+          <ul class="space-y-2 text-gray-700">
+            <li class="flex items-start">
+              <span class="text-green-600 mr-2">•</span>
+              <span>Páginas para colorir com ilustrações bíblicas</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-600 mr-2">•</span>
+              <span>Jogos de memória e quebra-cabeças temáticos</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-600 mr-2">•</span>
+              <span>Atividades de recorte e montagem</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-600 mr-2">•</span>
+              <span>Materiais imprimíveis em formato A4</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="mb-6">
+          <h3 class="font-bold text-green-700 mb-3 text-lg">💡 Benefícios:</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-semibold">Fixação do Aprendizado</span>
+            <span class="bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-semibold">Desenvolvimento Motor</span>
+            <span class="bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-semibold">Criatividade</span>
+            <span class="bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-semibold">Diversão Educativa</span>
+          </div>
+        </div>
+
+        <div class="flex justify-center">
+          <a href="#secao-final" class="inline-flex items-center justify-center bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-bold text-lg transition-all shadow-lg hover:shadow-xl">
+            <i data-lucide="shopping-cart" class="w-5 h-5 mr-2"></i>
+            Adquirir Atividades
+          </a>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section class="fade-in-section">
-    <h2 class="font-serif text-2xl text-brand-blue font-bold mb-4">Formatos e licenças</h2>
-    <p class="text-gray-700 mb-4">Arquivos entregues via download após compra. Licença para uso pessoal e em ministérios locais (sem comercialização das artes).</p>
+  <!-- Bloco 3: A Bíblia em Cores -->
+  <section class="mb-16 fade-in-section">
+    <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
+      <!-- Carrossel de Imagens -->
+      <div class="relative bg-gray-100">
+        <div id="carousel-ilustracoes-3" class="relative h-[400px] md:h-[500px]">
+          <div class="carousel-slide active flex items-center justify-center h-full p-4">
+            <img src="/pagina/files/ilustracoes_biblicas/biblia_em_cores/genesis/capa_genesis.png" alt="Gênesis" class="max-h-full max-w-full object-contain">
+          </div>
+          <div class="carousel-slide hidden flex items-center justify-center h-full p-4">
+            <img src="/pagina/files/ilustracoes_biblicas/biblia_em_cores/genesis/capa_genesis.png" alt="Gênesis" class="max-h-full max-w-full object-contain">
+          </div>
+          <div class="carousel-slide hidden flex items-center justify-center h-full p-4">
+            <img src="/pagina/files/ilustracoes_biblicas/biblia_em_cores/genesis/capa_genesis.png" alt="Gênesis" class="max-h-full max-w-full object-contain">
+          </div>
+        </div>
+        
+        <!-- Controles do Carrossel -->
+        <button onclick="prevSlide('carousel-ilustracoes-3')" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-brand-blue p-3 rounded-full shadow-lg transition-all">
+          <i data-lucide="chevron-left" class="w-6 h-6"></i>
+        </button>
+        <button onclick="nextSlide('carousel-ilustracoes-3')" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-brand-blue p-3 rounded-full shadow-lg transition-all">
+          <i data-lucide="chevron-right" class="w-6 h-6"></i>
+        </button>
+      </div>
+
+      <!-- Conteúdo Descritivo -->
+      <div class="p-8 md:p-12">
+        <h2 class="font-serif text-3xl md:text-4xl text-purple-700 font-bold mb-4">A Bíblia em Cores</h2>
+        <p class="text-lg text-gray-700 mb-6 leading-relaxed">
+          Uma jornada visual pelas Escrituras Sagradas! Esta coleção especial apresenta as principais passagens bíblicas em ilustrações 
+          vibrantes e coloridas, tornando a Palavra de Deus mais acessível e memorável para crianças e famílias.
+        </p>
+
+        <div class="bg-purple-50 border-l-4 border-purple-600 p-6 rounded-lg mb-6">
+          <h3 class="font-bold text-purple-700 mb-3 text-lg">🎨 Diferenciais:</h3>
+          <ul class="space-y-2 text-gray-700">
+            <li class="flex items-start">
+              <span class="text-purple-600 mr-2">•</span>
+              <span>Ilustrações sequenciais de histórias completas</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-purple-600 mr-2">•</span>
+              <span>Títulos-chave destacados em cada cena</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-purple-600 mr-2">•</span>
+              <span>Paleta de cores cuidadosamente selecionada</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-purple-600 mr-2">•</span>
+              <span>Linha do tempo bíblica ilustrada</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="mb-6">
+          <h3 class="font-bold text-purple-700 mb-3 text-lg">🌟 Ideal para:</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="bg-purple-100 text-purple-700 px-4 py-2 rounded-full text-sm font-semibold">Devocionais em Família</span>
+            <span class="bg-purple-100 text-purple-700 px-4 py-2 rounded-full text-sm font-semibold">Escola Bíblica</span>
+            <span class="bg-purple-100 text-purple-700 px-4 py-2 rounded-full text-sm font-semibold">Apresentações Visuais</span>
+            <span class="bg-purple-100 text-purple-700 px-4 py-2 rounded-full text-sm font-semibold">Material de Apoio</span>
+          </div>
+        </div>
+
+        <div class="flex justify-center">
+          <a href="#secao-final" class="inline-flex items-center justify-center bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 rounded-lg font-bold text-lg transition-all shadow-lg hover:shadow-xl">
+            <i data-lucide="shopping-cart" class="w-5 h-5 mr-2"></i>
+            Adquirir Coleção
+          </a>
+        </div>
+      </div>
+    </div>
   </section>
+
+  <!-- Seção de Chamada Final -->
+  <section id="secao-final" class="fade-in-section">
+    <div class="bg-gradient-to-br from-brand-blue to-blue-900 text-white rounded-2xl p-8 md:p-12 text-center shadow-2xl">
+      <div class="inline-block bg-brand-gold text-blue-900 px-6 py-2 rounded-full font-bold text-lg mb-4">
+        🎉 OFERTA PROMOCIONAL
+      </div>
+      <h2 class="font-serif text-3xl md:text-5xl font-bold mb-4">Invista no Futuro do Seu Pequeno Herdeiro!</h2>
+      <p class="text-xl md:text-2xl text-brand-gold font-bold mb-6">
+        Por apenas <span class="text-4xl">R$ 9,90</span>
+      </p>
+      <p class="text-lg text-blue-100 mb-8 max-w-3xl mx-auto leading-relaxed">
+        Acesso completo a TODAS as nossas coleções de ilustrações, atividades e recursos educativos. 
+        Uma solução completa para o desenvolvimento integral do seu filho!
+      </p>
+      
+      <!-- Benefícios -->
+      <div class="grid md:grid-cols-2 gap-4 max-w-3xl mx-auto mb-10 text-left">
+        <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+          <div class="flex items-start gap-3">
+            <div class="bg-brand-gold text-blue-900 rounded-full p-2 flex-shrink-0">
+              <i data-lucide="brain" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-lg mb-2">Desenvolvimento Cognitivo</h3>
+              <p class="text-blue-100 text-sm">Estimula o raciocínio lógico, memória e capacidade de aprendizado através de atividades interativas</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+          <div class="flex items-start gap-3">
+            <div class="bg-brand-gold text-blue-900 rounded-full p-2 flex-shrink-0">
+              <i data-lucide="pen-tool" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-lg mb-2">Coordenação Motora</h3>
+              <p class="text-blue-100 text-sm">Aperfeiçoa a escrita e habilidades manuais através de pintura, recorte e atividades práticas</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+          <div class="flex items-start gap-3">
+            <div class="bg-brand-gold text-blue-900 rounded-full p-2 flex-shrink-0">
+              <i data-lucide="sparkles" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-lg mb-2">Criatividade e Imaginação</h3>
+              <p class="text-blue-100 text-sm">Incentiva a expressão artística e o pensamento criativo em cada atividade</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+          <div class="flex items-start gap-3">
+            <div class="bg-brand-gold text-blue-900 rounded-full p-2 flex-shrink-0">
+              <i data-lucide="monitor-off" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-lg mb-2">Menos Tempo de Tela</h3>
+              <p class="text-blue-100 text-sm">Proporciona entretenimento educativo offline, reduzindo a exposição excessiva a dispositivos eletrônicos</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a href="https://pay.cakto.com.br/tmz5ezi_668607" target="_blank" class="inline-flex items-center justify-center bg-brand-gold hover:bg-brand-gold-dark text-blue-900 px-12 py-6 rounded-lg font-bold text-2xl transition-all shadow-lg hover:shadow-xl transform hover:scale-105">
+        <i data-lucide="package" class="w-7 h-7 mr-3"></i>
+        Garantir Meu Acesso Agora!
+      </a>
+      <p class="text-sm text-blue-200 mt-6 flex items-center justify-center gap-2">
+        <i data-lucide="shield-check" class="w-4 h-4"></i>
+        Pagamento 100% seguro • Acesso imediato após confirmação
+      </p>
+    </div>
+  </section>
+
 </main>
 
 <footer class="bg-brand-blue text-white py-12 mt-12 border-t border-blue-800">
@@ -91,8 +362,59 @@
 <script src="/pagina/js/load-nav.js"></script>
 <script>
   lucide.createIcons();
-  const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('is-visible'); }); }, {threshold:0.1});
+  
+  // Intersection Observer para animações
+  const observer = new IntersectionObserver((entries) => { 
+    entries.forEach(e => { 
+      if(e.isIntersecting) e.target.classList.add('is-visible'); 
+    }); 
+  }, {threshold:0.1});
   document.querySelectorAll('.fade-in-section').forEach(s => observer.observe(s));
+
+  // Funções do Carrossel
+  function nextSlide(carouselId) {
+    const carousel = document.getElementById(carouselId);
+    const slides = carousel.querySelectorAll('.carousel-slide');
+    let currentIndex = Array.from(slides).findIndex(slide => slide.classList.contains('active'));
+    
+    slides[currentIndex].classList.remove('active');
+    slides[currentIndex].classList.add('hidden');
+    
+    currentIndex = (currentIndex + 1) % slides.length;
+    
+    slides[currentIndex].classList.remove('hidden');
+    slides[currentIndex].classList.add('active');
+  }
+
+  function prevSlide(carouselId) {
+    const carousel = document.getElementById(carouselId);
+    const slides = carousel.querySelectorAll('.carousel-slide');
+    let currentIndex = Array.from(slides).findIndex(slide => slide.classList.contains('active'));
+    
+    slides[currentIndex].classList.remove('active');
+    slides[currentIndex].classList.add('hidden');
+    
+    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    
+    slides[currentIndex].classList.remove('hidden');
+    slides[currentIndex].classList.add('active');
+  }
+
+  // Autoplay para cada carrossel
+  setInterval(() => nextSlide('carousel-ilustracoes-1'), 4000);
+  setInterval(() => nextSlide('carousel-ilustracoes-2'), 4000);
+  setInterval(() => nextSlide('carousel-ilustracoes-3'), 4000);
+
+  // Scroll suave para links âncora
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
+  });
 </script>
 </body>
 </html>
