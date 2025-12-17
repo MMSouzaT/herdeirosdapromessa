@@ -234,7 +234,7 @@
           </div>
 
           <div class="space-y-4">
-            <a href="https://drive.google.com/file/d/1YduedSeFQeXgBFhkUqgZZuyT7xnNqbcQ/view" class="block bg-white hover:bg-gray-50 text-brand-blue px-8 py-4 rounded-lg font-bold text-center transition-all shadow-lg hover:shadow-xl">
+            <a href="https://drive.google.com/file/d/1YduedSeFQeXgBFhkUqgZZuyT7xnNqbcQ/view" target="_blank" class="block bg-white hover:bg-gray-50 text-brand-blue px-8 py-4 rounded-lg font-bold text-center transition-all shadow-lg hover:shadow-xl">
               <div class="flex items-center justify-center gap-2">
                 <i data-lucide="download" class="w-5 h-5"></i>
                 <span>Baixar E-book</span>
@@ -242,7 +242,7 @@
               <p class="text-xs text-gray-600 mt-1">O Menino que Mudou o Mundo</p>
             </a>
 
-            <a href="https://drive.google.com/file/d/1hJRzqHlgDdw-u1vlIaSBVU5ere4mR0Z8/view?usp=sharing" class="block bg-white hover:bg-gray-50 text-purple-700 px-8 py-4 rounded-lg font-bold text-center transition-all shadow-lg hover:shadow-xl">
+            <a href="https://drive.google.com/file/d/1hJRzqHlgDdw-u1vlIaSBVU5ere4mR0Z8/view?usp=sharing" target="_blank" class="block bg-white hover:bg-gray-50 text-purple-700 px-8 py-4 rounded-lg font-bold text-center transition-all shadow-lg hover:shadow-xl">
               <div class="flex items-center justify-center gap-2">
                 <i data-lucide="download" class="w-5 h-5"></i>
                 <span>Baixar planner</span>
@@ -374,6 +374,79 @@
     }); 
   }, {threshold:0.1});
   document.querySelectorAll('.fade-in-section').forEach(s => observer.observe(s));
+  
+  // Carousel functionality
+  function nextSlide(carouselId) {
+    const carousel = document.getElementById(carouselId);
+    const slides = carousel.querySelectorAll('.carousel-slide');
+    let currentIndex = Array.from(slides).findIndex(s => s.classList.contains('active'));
+    
+    slides[currentIndex].classList.remove('active');
+    slides[currentIndex].classList.add('hidden');
+    
+    currentIndex = (currentIndex + 1) % slides.length;
+    
+    slides[currentIndex].classList.remove('hidden');
+    slides[currentIndex].classList.add('active');
+    
+    // Reiniciar o autoplay após navegação manual
+    startCarouselAutoplay(carouselId, 4000);
+  }
+
+  function prevSlide(carouselId) {
+    const carousel = document.getElementById(carouselId);
+    const slides = carousel.querySelectorAll('.carousel-slide');
+    let currentIndex = Array.from(slides).findIndex(s => s.classList.contains('active'));
+    
+    slides[currentIndex].classList.remove('active');
+    slides[currentIndex].classList.add('hidden');
+    
+    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    
+    slides[currentIndex].classList.remove('hidden');
+    slides[currentIndex].classList.add('active');
+    
+    // Reiniciar o autoplay após navegação manual
+    startCarouselAutoplay(carouselId, 4000);
+  }
+  
+  // Auto-advance carousels every 4 seconds with pause on interaction
+  const carouselIntervals = {};
+  
+  function startCarouselAutoplay(carouselId, interval = 4000) {
+    if (carouselIntervals[carouselId]) {
+      clearInterval(carouselIntervals[carouselId]);
+    }
+    carouselIntervals[carouselId] = setInterval(() => nextSlide(carouselId), interval);
+  }
+  
+  function pauseCarouselAutoplay(carouselId) {
+    if (carouselIntervals[carouselId]) {
+      clearInterval(carouselIntervals[carouselId]);
+      carouselIntervals[carouselId] = null;
+    }
+  }
+  
+  function resumeCarouselAutoplay(carouselId, interval = 4000) {
+    startCarouselAutoplay(carouselId, interval);
+  }
+  
+  // Inicializar autoplay para todos os carrosséis
+  ['carousel-gratuito'].forEach(id => {
+    const carousel = document.getElementById(id);
+    if (carousel) {
+      // Iniciar autoplay
+      startCarouselAutoplay(id, 4000);
+      
+      // Pausar ao passar o mouse ou tocar
+      carousel.addEventListener('mouseenter', () => pauseCarouselAutoplay(id));
+      carousel.addEventListener('touchstart', () => pauseCarouselAutoplay(id));
+      
+      // Retomar ao tirar o mouse ou terminar o toque
+      carousel.addEventListener('mouseleave', () => resumeCarouselAutoplay(id, 4000));
+      carousel.addEventListener('touchend', () => resumeCarouselAutoplay(id, 4000));
+    }
+  });
 </script>
 </body>
 </html>

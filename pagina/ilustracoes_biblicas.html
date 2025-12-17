@@ -384,6 +384,9 @@
     
     slides[currentIndex].classList.remove('hidden');
     slides[currentIndex].classList.add('active');
+    
+    // Reiniciar o autoplay após navegação manual
+    startCarouselAutoplay(carouselId, 4000);
   }
 
   function prevSlide(carouselId) {
@@ -398,12 +401,48 @@
     
     slides[currentIndex].classList.remove('hidden');
     slides[currentIndex].classList.add('active');
+    
+    // Reiniciar o autoplay após navegação manual
+    startCarouselAutoplay(carouselId, 4000);
   }
 
-  // Autoplay para cada carrossel
-  setInterval(() => nextSlide('carousel-ilustracoes-1'), 4000);
-  setInterval(() => nextSlide('carousel-ilustracoes-2'), 4000);
-  setInterval(() => nextSlide('carousel-ilustracoes-3'), 4000);
+  // Autoplay para cada carrossel com pausa ao interagir
+  const carouselIntervals = {};
+  
+  function startCarouselAutoplay(carouselId, interval = 4000) {
+    if (carouselIntervals[carouselId]) {
+      clearInterval(carouselIntervals[carouselId]);
+    }
+    carouselIntervals[carouselId] = setInterval(() => nextSlide(carouselId), interval);
+  }
+  
+  function pauseCarouselAutoplay(carouselId) {
+    if (carouselIntervals[carouselId]) {
+      clearInterval(carouselIntervals[carouselId]);
+      carouselIntervals[carouselId] = null;
+    }
+  }
+  
+  function resumeCarouselAutoplay(carouselId, interval = 4000) {
+    startCarouselAutoplay(carouselId, interval);
+  }
+  
+  // Inicializar autoplay para todos os carrosséis
+  ['carousel-ilustracoes-1', 'carousel-ilustracoes-2', 'carousel-ilustracoes-3'].forEach(id => {
+    const carousel = document.getElementById(id);
+    if (carousel) {
+      // Iniciar autoplay
+      startCarouselAutoplay(id, 4000);
+      
+      // Pausar ao passar o mouse ou tocar
+      carousel.addEventListener('mouseenter', () => pauseCarouselAutoplay(id));
+      carousel.addEventListener('touchstart', () => pauseCarouselAutoplay(id));
+      
+      // Retomar ao tirar o mouse ou terminar o toque
+      carousel.addEventListener('mouseleave', () => resumeCarouselAutoplay(id, 4000));
+      carousel.addEventListener('touchend', () => resumeCarouselAutoplay(id, 4000));
+    }
+  });
 
   // Scroll suave para links âncora
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {

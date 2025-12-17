@@ -443,12 +443,43 @@
             slides[currentIndex].classList.add('active');
         }
 
-        // Auto-advance carrosséis dos produtos a cada 5 segundos
-        setInterval(() => {
-            ['carousel-historias', 'carousel-ilustracoes'].forEach(id => {
-                if(document.getElementById(id)) nextSlideProdutos(id);
-            });
-        }, 5000);
+        // Auto-advance carrosséis dos produtos a cada 5 segundos com pausa ao interagir
+        const carouselIntervalsProdutos = {};
+        
+        function startCarouselAutoplayProdutos(carouselId, interval = 5000) {
+            if (carouselIntervalsProdutos[carouselId]) {
+                clearInterval(carouselIntervalsProdutos[carouselId]);
+            }
+            carouselIntervalsProdutos[carouselId] = setInterval(() => nextSlideProdutos(carouselId), interval);
+        }
+        
+        function pauseCarouselAutoplayProdutos(carouselId) {
+            if (carouselIntervalsProdutos[carouselId]) {
+                clearInterval(carouselIntervalsProdutos[carouselId]);
+                carouselIntervalsProdutos[carouselId] = null;
+            }
+        }
+        
+        function resumeCarouselAutoplayProdutos(carouselId, interval = 5000) {
+            startCarouselAutoplayProdutos(carouselId, interval);
+        }
+        
+        // Inicializar autoplay para todos os carrosséis de produtos
+        ['carousel-historias', 'carousel-ilustracoes'].forEach(id => {
+            const carousel = document.getElementById(id);
+            if (carousel) {
+                // Iniciar autoplay
+                startCarouselAutoplayProdutos(id, 5000);
+                
+                // Pausar ao passar o mouse ou tocar
+                carousel.addEventListener('mouseenter', () => pauseCarouselAutoplayProdutos(id));
+                carousel.addEventListener('touchstart', () => pauseCarouselAutoplayProdutos(id));
+                
+                // Retomar ao tirar o mouse ou terminar o toque
+                carousel.addEventListener('mouseleave', () => resumeCarouselAutoplayProdutos(id, 5000));
+                carousel.addEventListener('touchend', () => resumeCarouselAutoplayProdutos(id, 5000));
+            }
+        });
     </script>
 </body>
 </html>
