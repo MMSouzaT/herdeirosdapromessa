@@ -77,6 +77,58 @@
   </div>
 </header>
 
+<!-- SEÇÃO: Vídeo de Apresentação -->
+<section class="bg-gradient-to-b from-slate-50 to-white py-16">
+  <div class="container mx-auto px-6">
+    <div class="max-w-4xl mx-auto">
+      <!-- Texto acima do vídeo -->
+      <div class="text-center mb-8">
+        <p class="font-serif text-2xl md:text-3xl text-brand-blue font-semibold leading-relaxed">
+          "O que seu filho aprende hoje, define quem ele será amanhã. <br class="hidden md:block">
+          <span class="text-brand-gold-dark italic">Não deixe o mundo preencher o coração dele com vazio.</span>"
+        </p>
+      </div>
+      
+      <!-- Container do vídeo com moldura -->
+      <div class="relative">
+        <!-- Moldura decorativa -->
+        <div class="absolute -inset-4 bg-gradient-to-r from-brand-gold via-brand-gold-dark to-brand-gold rounded-2xl blur-sm opacity-30"></div>
+        
+        <!-- Vídeo -->
+        <div class="relative bg-white p-4 md:p-6 rounded-2xl shadow-2xl">
+          <div class="relative rounded-xl overflow-hidden shadow-lg" style="padding-top: 56.25%;">
+            <video 
+              id="videoAutoPlay"
+              class="absolute top-0 left-0 w-full h-full object-cover"
+              controls 
+              
+              playsinline
+              preload="metadata"
+              poster="files/adquira_ja/video_poster.jpg"
+            >
+              <source src="files/adquira_ja/chamada_compra.mp4" type="video/mp4">
+              Seu navegador não suporta a reprodução de vídeos.
+            </video>
+          </div>
+        </div>
+        
+        <!-- Detalhe decorativo -->
+        <div class="absolute -bottom-3 left-1/2 transform -translate-x-1/2 bg-brand-gold text-brand-blue px-6 py-2 rounded-full shadow-lg">
+          <p class="text-sm font-bold whitespace-nowrap">▶ Assista e descubra</p>
+        </div>
+      </div>
+      
+      <!-- Botão de ação -->
+      <div class="text-center mt-12">
+        <a href="#comprar" class="inline-block bg-gradient-to-r from-green-500 to-green-600 text-white px-8 py-4 md:px-12 md:py-5 rounded-xl font-bold text-lg md:text-xl hover:from-green-600 hover:to-green-700 transition-all transform hover:-translate-y-1 hover:scale-105 shadow-2xl">
+          🎁 SIM, QUERO TRANSFORMAR O FUTURO DOS MEUS FILHOS!
+        </a>
+        <p class="text-sm text-gray-600 mt-4">⚡ Oferta por tempo limitado • 💳 Acesso imediato</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <main class="container mx-auto px-6 py-16">
   
   <!-- SEÇÃO: Problemas que Resolvemos -->
@@ -495,6 +547,33 @@
     <p class="text-xs text-blue-300">Educação cristã com amor para edificar pequenos corações</p>
   </div>
 </footer>
+
+<script>
+  // Autoplay do vídeo quando estiver visível
+  document.addEventListener('DOMContentLoaded', function() {
+    const video = document.getElementById('videoAutoPlay');
+    
+    if (video) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // Vídeo está visível, iniciar reprodução
+            video.play().catch(err => {
+              console.log('Autoplay bloqueado pelo navegador:', err);
+            });
+          } else {
+            // Vídeo não está visível, pausar
+            video.pause();
+          }
+        });
+      }, {
+        threshold: 0.5 // 50% do vídeo precisa estar visível
+      });
+      
+      observer.observe(video);
+    }
+  });
+</script>
 
 <!-- Scripts -->
 <script>
