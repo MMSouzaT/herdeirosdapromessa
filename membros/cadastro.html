@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Herdeiros da Promessa</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../pagina/styles.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <h1>Criar Conta</h1>
+                <p>Cadastre-se para acessar nossos e-books</p>
+            </div>
+
+            <form id="registerForm" class="auth-form">
+                <div class="form-group">
+                    <label for="name">Nome Completo</label>
+                    <input type="text" id="name" name="name" required 
+                           placeholder="Seu nome completo">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required 
+                           placeholder="seu@email.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Senha</label>
+                    <input type="password" id="password" name="password" required 
+                           placeholder="Mínimo 6 caracteres" minlength="6">
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Confirmar Senha</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required 
+                           placeholder="Digite a senha novamente" minlength="6">
+                </div>
+
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="terms" required>
+                        <span>Aceito os <a href="#" target="_blank">termos de uso</a> e <a href="#" target="_blank">política de privacidade</a></span>
+                    </label>
+                </div>
+
+                <button type="submit" class="btn-primary" id="registerBtn">
+                    Criar Conta
+                </button>
+
+                <div id="errorMessage" class="error-message" style="display: none;"></div>
+                <div id="successMessage" class="success-message" style="display: none;"></div>
+            </form>
+
+            <div class="auth-footer">
+                <p>Já tem uma conta? <a href="login.html">Faça login</a></p>
+                <p><a href="../index.html">Voltar para o site</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+
+    <!-- Backend Scripts -->
+    <script src="../backend/firebase-config.js"></script>
+    <script src="../backend/auth.js"></script>
+
+    <!-- Page Script -->
+    <script>
+        // Inicializar Firebase
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeFirebase();
+            
+            // Inicializar sistema de autenticação
+            setTimeout(() => {
+                if (window.firebase && window.firebase.auth && window.firebase.firestore) {
+                    authSystem.init(firebase.auth(), firebase.firestore());
+                }
+            }, 500);
+        });
+
+        // Handler do formulário de cadastro
+        document.getElementById('registerForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const registerBtn = document.getElementById('registerBtn');
+            const errorMsg = document.getElementById('errorMessage');
+            const successMsg = document.getElementById('successMessage');
+            
+            // Limpar mensagens
+            errorMsg.style.display = 'none';
+            successMsg.style.display = 'none';
+            
+            // Validar senhas
+            if (password !== confirmPassword) {
+                errorMsg.textContent = 'As senhas não coincidem';
+                errorMsg.style.display = 'block';
+                return;
+            }
+            
+            // Desabilitar botão
+            registerBtn.disabled = true;
+            registerBtn.textContent = 'Criando conta...';
+            
+            try {
+                const result = await authSystem.register(email, password, name);
+                
+                if (result.success) {
+                    successMsg.innerHTML = `
+                        <strong>Conta criada com sucesso!</strong><br>
+                        Para acessar os e-books, você precisa adquirir um produto.<br>
+                        Redirecionando para a loja...
+                    `;
+                    successMsg.style.display = 'block';
+                    
+                    // Redirecionar para página de produtos
+                    setTimeout(() => {
+                        window.location.href = '../pagina/produtos.html';
+                    }, 3000);
+                } else {
+                    errorMsg.textContent = result.error;
+                    errorMsg.style.display = 'block';
+                    registerBtn.disabled = false;
+                    registerBtn.textContent = 'Criar Conta';
+                }
+            } catch (error) {
+                errorMsg.textContent = 'Erro ao criar conta. Tente novamente.';
+                errorMsg.style.display = 'block';
+                registerBtn.disabled = false;
+                registerBtn.textContent = 'Criar Conta';
+            }
+        });
+
+        // Validação em tempo real de senha
+        document.getElementById('confirmPassword').addEventListener('input', (e) => {
+            const password = document.getElementById('password').value;
+            const confirmPassword = e.target.value;
+            const errorMsg = document.getElementById('errorMessage');
+            
+            if (confirmPassword && password !== confirmPassword) {
+                errorMsg.textContent = 'As senhas não coincidem';
+                errorMsg.style.display = 'block';
+            } else {
+                errorMsg.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

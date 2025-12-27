@@ -1,0 +1,279 @@
+<!-- Exemplo de página de pagamento integrada -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalizar Compra - Herdeiros da Promessa</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../pagina/styles.css">
+</head>
+<body>
+    <div class="checkout-container">
+        <div class="checkout-card">
+            <div class="checkout-header">
+                <h1>Finalizar Compra</h1>
+                <p>Complete seu pedido para ter acesso imediato</p>
+            </div>
+
+            <!-- Product Info -->
+            <div id="productInfo" class="product-info">
+                <h3>Seu Pedido</h3>
+                <div id="productDetails"></div>
+            </div>
+
+            <!-- User Info -->
+            <div class="user-section">
+                <h3>Suas Informações</h3>
+                <p id="userEmail"></p>
+                <p id="userName"></p>
+            </div>
+
+            <!-- Payment Options -->
+            <div class="payment-section">
+                <h3>Escolha a Forma de Pagamento</h3>
+                
+                <div class="payment-options">
+                    <button class="payment-option" onclick="selectPaymentMethod('mercadopago')">
+                        <span class="payment-icon">💳</span>
+                        <div>
+                            <strong>Mercado Pago</strong>
+                            <p>Cartão, boleto ou PIX</p>
+                        </div>
+                    </button>
+                    
+                    <button class="payment-option" onclick="selectPaymentMethod('stripe')">
+                        <span class="payment-icon">💳</span>
+                        <div>
+                            <strong>Cartão de Crédito</strong>
+                            <p>Pagamento seguro via Stripe</p>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Price Summary -->
+            <div class="price-summary">
+                <div class="price-line">
+                    <span>Subtotal:</span>
+                    <span id="subtotal">R$ 0,00</span>
+                </div>
+                <div class="price-line total">
+                    <span><strong>Total:</strong></span>
+                    <span id="total"><strong>R$ 0,00</strong></span>
+                </div>
+            </div>
+
+            <div id="errorMessage" class="error-message" style="display: none;"></div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+
+    <!-- Backend Scripts -->
+    <script src="../backend/firebase-config.js"></script>
+    <script src="../backend/auth.js"></script>
+    <script src="../backend/products.js"></script>
+    <script src="../backend/payment.js"></script>
+
+    <!-- Page Script -->
+    <script>
+        let currentUser = null;
+        let currentProduct = null;
+
+        // Inicializar
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeFirebase();
+            
+            setTimeout(() => {
+                if (window.firebase) {
+                    authSystem.init(firebase.auth(), firebase.firestore());
+                    productsSystem.init(firebase.firestore(), firebase.storage());
+                    paymentSystem.init(firebase.firestore());
+                    
+                    firebase.auth().onAuthStateChanged(async (user) => {
+                        if (user) {
+                            currentUser = user;
+                            await loadCheckout();
+                        } else {
+                            // Redirecionar para cadastro com retorno
+                            const productId = new URLSearchParams(window.location.search).get('product');
+                            window.location.href = `cadastro.html?redirect=checkout&product=${productId}`;
+                        }
+                    });
+                }
+            }, 500);
+        });
+
+        // Carregar checkout
+        async function loadCheckout() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get('product');
+            
+            if (!productId) {
+                showError('Produto não encontrado');
+                return;
+            }
+            
+            try {
+                // Carregar produto
+                const productDoc = await firebase.firestore().collection('products').doc(productId).get();
+                
+                if (!productDoc.exists) {
+                    showError('Produto não encontrado');
+                    return;
+                }
+                
+                currentProduct = { id: productDoc.id, ...productDoc.data() };
+                
+                // Exibir informações
+                document.getElementById('userEmail').textContent = currentUser.email;
+                document.getElementById('userName').textContent = currentUser.displayName || 'Usuário';
+                
+                document.getElementById('productDetails').innerHTML = `
+                    <div class="product-item">
+                        <h4>${currentProduct.name}</h4>
+                        <p>${currentProduct.description}</p>
+                        <span class="price">R$ ${currentProduct.price.toFixed(2)}</span>
+                    </div>
+                `;
+                
+                document.getElementById('subtotal').textContent = `R$ ${currentProduct.price.toFixed(2)}`;
+                document.getElementById('total').textContent = `R$ ${currentProduct.price.toFixed(2)}`;
+                
+            } catch (error) {
+                console.error('Erro ao carregar checkout:', error);
+                showError('Erro ao carregar informações');
+            }
+        }
+
+        // Selecionar método de pagamento
+        async function selectPaymentMethod(method) {
+            if (!currentProduct || !currentUser) return;
+            
+            try {
+                if (method === 'mercadopago') {
+                    // Criar preferência do Mercado Pago
+                    const result = await paymentSystem.createMercadoPagoCheckout(
+                        currentProduct,
+                        currentUser.email
+                    );
+                    
+                    if (result.success) {
+                        // Redirecionar para checkout do Mercado Pago
+                        window.location.href = result.checkoutUrl;
+                    } else {
+                        showError(result.error);
+                    }
+                } else if (method === 'stripe') {
+                    // Implementar Stripe
+                    showError('Stripe em breve!');
+                }
+            } catch (error) {
+                console.error('Erro ao processar pagamento:', error);
+                showError('Erro ao processar pagamento');
+            }
+        }
+
+        // Mostrar erro
+        function showError(message) {
+            const errorMsg = document.getElementById('errorMessage');
+            errorMsg.textContent = message;
+            errorMsg.style.display = 'block';
+        }
+    </script>
+
+    <style>
+        .checkout-container {
+            min-height: 100vh;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .checkout-card {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .checkout-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .product-info,
+        .user-section,
+        .payment-section {
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .product-item {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .product-item .price {
+            font-size: 24px;
+            font-weight: bold;
+            color: #4a90e2;
+        }
+
+        .payment-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .payment-option {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .payment-option:hover {
+            border-color: #4a90e2;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .payment-icon {
+            font-size: 32px;
+        }
+
+        .price-summary {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #e0e0e0;
+        }
+
+        .price-line {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+        .price-line.total {
+            font-size: 20px;
+            margin-top: 15px;
+            color: #4a90e2;
+        }
+    </style>
+</body>
+</html>

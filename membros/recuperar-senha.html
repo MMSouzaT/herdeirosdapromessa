@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperar Senha - Herdeiros da Promessa</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../pagina/styles.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <h1>Recuperar Senha</h1>
+                <p>Digite seu email para receber instruções</p>
+            </div>
+
+            <form id="resetForm" class="auth-form">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required 
+                           placeholder="seu@email.com">
+                </div>
+
+                <button type="submit" class="btn-primary" id="resetBtn">
+                    Enviar Link de Recuperação
+                </button>
+
+                <div id="errorMessage" class="error-message" style="display: none;"></div>
+                <div id="successMessage" class="success-message" style="display: none;"></div>
+            </form>
+
+            <div class="auth-footer">
+                <p><a href="login.html">Voltar para o login</a></p>
+                <p><a href="../index.html">Voltar para o site</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+
+    <!-- Backend Scripts -->
+    <script src="../backend/firebase-config.js"></script>
+    <script src="../backend/auth.js"></script>
+
+    <!-- Page Script -->
+    <script>
+        // Inicializar Firebase
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeFirebase();
+            
+            setTimeout(() => {
+                if (window.firebase && window.firebase.auth && window.firebase.firestore) {
+                    authSystem.init(firebase.auth(), firebase.firestore());
+                }
+            }, 500);
+        });
+
+        // Handler do formulário
+        document.getElementById('resetForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const resetBtn = document.getElementById('resetBtn');
+            const errorMsg = document.getElementById('errorMessage');
+            const successMsg = document.getElementById('successMessage');
+            
+            errorMsg.style.display = 'none';
+            successMsg.style.display = 'none';
+            
+            resetBtn.disabled = true;
+            resetBtn.textContent = 'Enviando...';
+            
+            try {
+                const result = await authSystem.resetPassword(email);
+                
+                if (result.success) {
+                    successMsg.innerHTML = `
+                        <strong>Email enviado com sucesso!</strong><br>
+                        Verifique sua caixa de entrada e siga as instruções para redefinir sua senha.
+                    `;
+                    successMsg.style.display = 'block';
+                    document.getElementById('email').value = '';
+                } else {
+                    errorMsg.textContent = result.error;
+                    errorMsg.style.display = 'block';
+                }
+            } catch (error) {
+                errorMsg.textContent = 'Erro ao enviar email. Tente novamente.';
+                errorMsg.style.display = 'block';
+            } finally {
+                resetBtn.disabled = false;
+                resetBtn.textContent = 'Enviar Link de Recuperação';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leitor de E-book - Herdeiros da Promessa</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../pagina/styles.css">
+</head>
+<body>
+    <div class="reader-container">
+        <!-- Header -->
+        <header class="reader-header">
+            <button onclick="window.location.href='dashboard.html'" class="btn-back">
+                ← Voltar
+            </button>
+            <h1 id="ebookTitle">Carregando...</h1>
+            <button id="downloadBtn" class="btn-download">
+                📥 Download
+            </button>
+        </header>
+
+        <!-- Loading -->
+        <div id="loadingScreen" class="loading-screen">
+            <div class="spinner"></div>
+            <p>Carregando e-book...</p>
+        </div>
+
+        <!-- Reader Content -->
+        <div id="readerContent" class="reader-content" style="display: none;">
+            <iframe id="pdfViewer" style="width: 100%; height: 100%; border: none;"></iframe>
+        </div>
+
+        <!-- Error Message -->
+        <div id="errorMessage" class="error-container" style="display: none;">
+            <h2>Erro ao carregar e-book</h2>
+            <p id="errorText"></p>
+            <button onclick="window.location.href='dashboard.html'" class="btn-primary">
+                Voltar ao Dashboard
+            </button>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage-compat.js"></script>
+
+    <!-- Backend Scripts -->
+    <script src="../backend/firebase-config.js"></script>
+    <script src="../backend/auth.js"></script>
+    <script src="../backend/products.js"></script>
+
+    <!-- Page Script -->
+    <script>
+        let currentUser = null;
+        let currentEbookUrl = null;
+        let currentFileName = null;
+
+        // Inicializar
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeFirebase();
+            
+            setTimeout(() => {
+                if (window.firebase) {
+                    authSystem.init(firebase.auth(), firebase.firestore());
+                    productsSystem.init(firebase.firestore(), firebase.storage());
+                    
+                    firebase.auth().onAuthStateChanged(async (user) => {
+                        if (user) {
+                            currentUser = user;
+                            await loadEbook();
+                        } else {
+                            window.location.href = 'login.html';
+                        }
+                    });
+                }
+            }, 500);
+        });
+
+        // Carregar e-book
+        async function loadEbook() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get('product');
+            const ebookId = urlParams.get('ebook');
+            
+            if (!productId || !ebookId) {
+                showError('Parâmetros inválidos');
+                return;
+            }
+            
+            try {
+                const result = await productsSystem.getEbookDownloadUrl(productId, ebookId, currentUser.uid);
+                
+                if (result.success) {
+                    currentEbookUrl = result.url;
+                    currentFileName = result.fileName;
+                    
+                    // Exibir PDF no iframe
+                    const pdfViewer = document.getElementById('pdfViewer');
+                    pdfViewer.src = result.url;
+                    
+                    // Mostrar conteúdo
+                    document.getElementById('loadingScreen').style.display = 'none';
+                    document.getElementById('readerContent').style.display = 'block';
+                } else {
+                    showError(result.error);
+                }
+            } catch (error) {
+                console.error('Erro ao carregar e-book:', error);
+                showError('Erro ao carregar e-book');
+            }
+        }
+
+        // Mostrar erro
+        function showError(message) {
+            document.getElementById('loadingScreen').style.display = 'none';
+            document.getElementById('errorMessage').style.display = 'flex';
+            document.getElementById('errorText').textContent = message;
+        }
+
+        // Download
+        document.getElementById('downloadBtn').addEventListener('click', () => {
+            if (currentEbookUrl) {
+                const link = document.createElement('a');
+                link.href = currentEbookUrl;
+                link.download = currentFileName || 'ebook.pdf';
+                link.target = '_blank';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+        });
+    </script>
+</body>
+</html>

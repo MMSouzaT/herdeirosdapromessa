@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Área - Herdeiros da Promessa</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../pagina/styles.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Header -->
+        <header class="dashboard-header">
+            <div class="header-content">
+                <h1>Minha Área</h1>
+                <div class="user-menu">
+                    <span id="userName">Carregando...</span>
+                    <button id="logoutBtn" class="btn-logout">Sair</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Loading Screen -->
+        <div id="loadingScreen" class="loading-screen">
+            <div class="spinner"></div>
+            <p>Carregando seus conteúdos...</p>
+        </div>
+
+        <!-- No Access Message -->
+        <div id="noAccessMessage" class="no-access-message" style="display: none;">
+            <div class="message-card">
+                <h2>🔒 Acesso Restrito</h2>
+                <p>Você ainda não possui acesso aos e-books.</p>
+                <p>Adquira um de nossos produtos para ter acesso completo!</p>
+                <a href="../pagina/produtos.html" class="btn-primary">Ver Produtos</a>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <main id="dashboardContent" class="dashboard-content" style="display: none;">
+            <!-- Welcome Section -->
+            <section class="welcome-section">
+                <h2>Bem-vindo de volta! 👋</h2>
+                <p>Aqui você encontra todos os seus e-books disponíveis para leitura e download.</p>
+            </section>
+
+            <!-- Products Section -->
+            <section class="products-section">
+                <h3>Meus Produtos</h3>
+                <div id="productsList" class="products-grid">
+                    <!-- Products will be loaded here -->
+                </div>
+            </section>
+
+            <!-- E-books Section -->
+            <section class="ebooks-section">
+                <h3>Meus E-books</h3>
+                <div id="ebooksList" class="ebooks-grid">
+                    <!-- E-books will be loaded here -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage-compat.js"></script>
+
+    <!-- Backend Scripts -->
+    <script src="../backend/firebase-config.js"></script>
+    <script src="../backend/auth.js"></script>
+    <script src="../backend/products.js"></script>
+
+    <!-- Page Script -->
+    <script>
+        let currentUser = null;
+
+        // Inicializar Firebase
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeFirebase();
+            
+            setTimeout(() => {
+                if (window.firebase) {
+                    authSystem.init(firebase.auth(), firebase.firestore());
+                    productsSystem.init(firebase.firestore(), firebase.storage());
+                    
+                    // Verificar autenticação
+                    firebase.auth().onAuthStateChanged(async (user) => {
+                        if (user) {
+                            currentUser = user;
+                            await loadDashboard(user);
+                        } else {
+                            // Redirecionar para login
+                            window.location.href = 'login.html';
+                        }
+                    });
+                }
+            }, 500);
+        });
+
+        // Carregar dashboard
+        async function loadDashboard(user) {
+            const loadingScreen = document.getElementById('loadingScreen');
+            const noAccessMessage = document.getElementById('noAccessMessage');
+            const dashboardContent = document.getElementById('dashboardContent');
+            const userName = document.getElementById('userName');
+            
+            // Mostrar nome do usuário
+            userName.textContent = user.displayName || user.email;
+            
+            try {
+                // Verificar acesso
+                const hasAccess = await authSystem.checkUserAccess(user.uid);
+                
+                if (!hasAccess) {
+                    loadingScreen.style.display = 'none';
+                    noAccessMessage.style.display = 'block';
+                    return;
+                }
+                
+                // Carregar produtos do usuário
+                const productsResult = await productsSystem.getUserProducts(user.uid);
+                
+                if (productsResult.success) {
+                    await displayProducts(productsResult.products);
+                    await loadAllEbooks(productsResult.products);
+                    
+                    loadingScreen.style.display = 'none';
+                    dashboardContent.style.display = 'block';
+                } else {
+                    throw new Error('Erro ao carregar produtos');
+                }
+            } catch (error) {
+                console.error('Erro ao carregar dashboard:', error);
+                loadingScreen.innerHTML = '<p>Erro ao carregar conteúdo. Por favor, recarregue a página.</p>';
+            }
+        }
+
+        // Exibir produtos
+        async function displayProducts(products) {
+            const productsList = document.getElementById('productsList');
+            
+            if (products.length === 0) {
+                productsList.innerHTML = '<p>Você ainda não possui produtos.</p>';
+                return;
+            }
+            
+            productsList.innerHTML = products.map(product => `
+                <div class="product-card">
+                    <h4>${product.name}</h4>
+                    <p>${product.description || ''}</p>
+                    <button class="btn-secondary" onclick="viewProduct('${product.id}')">
+                        Ver E-books
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        // Carregar todos os e-books
+        async function loadAllEbooks(products) {
+            const ebooksList = document.getElementById('ebooksList');
+            ebooksList.innerHTML = '<p>Carregando e-books...</p>';
+            
+            let allEbooks = [];
+            
+            for (const product of products) {
+                const ebooksResult = await productsSystem.getProductEbooks(product.id);
+                if (ebooksResult.success) {
+                    allEbooks = allEbooks.concat(
+                        ebooksResult.ebooks.map(ebook => ({
+                            ...ebook,
+                            productId: product.id,
+                            productName: product.name
+                        }))
+                    );
+                }
+            }
+            
+            if (allEbooks.length === 0) {
+                ebooksList.innerHTML = '<p>Nenhum e-book disponível no momento.</p>';
+                return;
+            }
+            
+            ebooksList.innerHTML = allEbooks.map(ebook => `
+                <div class="ebook-card">
+                    ${ebook.coverImage ? `<img src="${ebook.coverImage}" alt="${ebook.title}">` : ''}
+                    <div class="ebook-info">
+                        <h4>${ebook.title}</h4>
+                        <p class="product-tag">${ebook.productName}</p>
+                        <p>${ebook.description || ''}</p>
+                        <div class="ebook-actions">
+                            <button class="btn-primary" onclick="downloadEbook('${ebook.productId}', '${ebook.id}')">
+                                📥 Download
+                            </button>
+                            <button class="btn-secondary" onclick="readEbook('${ebook.productId}', '${ebook.id}')">
+                                📖 Ler Online
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Download de e-book
+        async function downloadEbook(productId, ebookId) {
+            if (!currentUser) return;
+            
+            try {
+                const result = await productsSystem.getEbookDownloadUrl(productId, ebookId, currentUser.uid);
+                
+                if (result.success) {
+                    // Criar link temporário e fazer download
+                    const link = document.createElement('a');
+                    link.href = result.url;
+                    link.download = result.fileName || 'ebook.pdf';
+                    link.target = '_blank';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                } else {
+                    alert('Erro ao baixar e-book: ' + result.error);
+                }
+            } catch (error) {
+                console.error('Erro ao baixar e-book:', error);
+                alert('Erro ao baixar e-book. Tente novamente.');
+            }
+        }
+
+        // Ler e-book online
+        async function readEbook(productId, ebookId) {
+            window.location.href = `leitor.html?product=${productId}&ebook=${ebookId}`;
+        }
+
+        // Ver produto específico
+        function viewProduct(productId) {
+            // Scroll para seção de e-books
+            document.querySelector('.ebooks-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Logout
+        document.getElementById('logoutBtn').addEventListener('click', async () => {
+            const result = await authSystem.logout();
+            if (result.success) {
+                window.location.href = 'login.html';
+            }
+        });
+    </script>
+</body>
+</html>
