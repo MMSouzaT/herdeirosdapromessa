@@ -26,7 +26,7 @@
 
 1. Acesse: https://search.google.com/search-console
 2. Clique em "Adicionar propriedade"
-3. Digite: `herdeirosdapromessa.com`
+3. Digite: `herdeirosdapromessa.com.br`
 4. Verifique a propriedade (método de arquivo HTML ou tag HTML)
 5. Após verificar, envie o sitemap:
    - Vá em "Sitemaps" no menu lateral
@@ -39,11 +39,11 @@
 No Google Search Console:
 1. Vá em "Inspeção de URL"
 2. Cole cada URL importante:
-   - https://herdeirosdapromessa.com/
-   - https://herdeirosdapromessa.com/produtos/
-   - https://herdeirosdapromessa.com/pagina/adquira_ja.html
-   - https://herdeirosdapromessa.com/historias_biblicas/
-   - https://herdeirosdapromessa.com/pagina/conteudo_gratuito.html
+   - https://herdeirosdapromessa.com.br/
+   - https://herdeirosdapromessa.com.br/produtos/
+   - https://herdeirosdapromessa.com.br/pagina/adquira_ja.html
+   - https://herdeirosdapromessa.com.br/historias_biblicas/
+   - https://herdeirosdapromessa.com.br/pagina/conteudo_gratuito.html
 3. Clique em "Solicitar indexação" para cada uma
 
 ### 3. Melhorias de Conteúdo

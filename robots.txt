@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://herdeirosdapromessa.com/sitemap.xml
+Sitemap: https://herdeirosdapromessa.com.br/sitemap.xml
