@@ -13,6 +13,29 @@
     <!-- Google Analytics -->
     <script src="js/analytics.js" defer></script>
     
+    <style>
+      @keyframes glow-pulse {
+        0%, 100% {
+          box-shadow: 0 0 5px rgba(234, 179, 8, 0.5), 0 0 10px rgba(234, 179, 8, 0.3), 0 0 15px rgba(234, 179, 8, 0.2);
+          transform: scale(1);
+        }
+        50% {
+          box-shadow: 0 0 10px rgba(234, 179, 8, 0.8), 0 0 20px rgba(234, 179, 8, 0.6), 0 0 30px rgba(234, 179, 8, 0.4);
+          transform: scale(1.02);
+        }
+      }
+      
+      .highlight-pulse {
+        display: inline-block;
+        padding: 8px 12px;
+        background: linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fef3c7 100%);
+        border: 2px solid #eab308;
+        border-radius: 8px;
+        animation: glow-pulse 2s ease-in-out infinite;
+        font-weight: 600;
+      }
+    </style>
+    
     <script>
       tailwind.config = {
         theme: {
@@ -101,17 +124,17 @@
         
         <!-- Vídeo -->
         <div class="relative bg-white p-4 md:p-6 rounded-2xl shadow-2xl">
-          <div class="relative rounded-xl overflow-hidden shadow-lg" style="padding-top: 56.25%;">
+          <div class="relative rounded-xl overflow-hidden shadow-lg flex justify-center items-center bg-black">
             <video 
               id="videoAutoPlay"
-              class="absolute top-0 left-0 w-full h-full object-cover"
+              class="w-full h-auto max-h-[600px]"
               controls 
               
               playsinline
               preload="metadata"
               poster="files/adquira_ja/video_poster.jpg"
             >
-              <source src="files/adquira_ja/chamada_compra.mp4" type="video/mp4">
+              <source src="files/adquira_ja/video_cafe_com_deus.mp4" type="video/mp4">
               Seu navegador não suporta a reprodução de vídeos.
             </video>
           </div>
@@ -185,7 +208,7 @@
           <div class="space-y-4 mb-6">
             <div class="flex items-start gap-3">
               <div class="bg-purple-600 text-white rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 mt-1">✓</div>
-              <p class="text-gray-700"><strong>5 Coleções Incríveis:</strong> Inúmeras histórias bíblicas ricamente ilustradas</p>
+              <p class="text-gray-700"><strong>Coleções Incríveis:</strong> Inúmeras histórias bíblicas ricamente ilustradas</p>
             </div>
             <div class="flex items-start gap-3">
               <div class="bg-purple-600 text-white rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 mt-1">✓</div>
@@ -218,12 +241,12 @@
                 <div class="text-7xl mb-4">📖</div>
                 <h3 class="font-serif text-2xl font-bold text-brand-blue mb-3">O Que Você Recebe:</h3>
                 <div class="text-left space-y-2 text-gray-700">
+                  <p>🎨 <span class="highlight-pulse">Coleção Café com Deus Kids - devocional diário para edificar a sua família</span></p>
                   <p>✨ Coleção Aprendendo a Orar - explore o poder da oração diária no seu lar! </p>
                   <p>🌟 Coleção Tesouros do Coração - ensine sobre sentimentos com base na bíblia!</p>
-                  <p>🎨 Coleção Histórias Ilustradas - histórias diversas sobre a bíblia!</p>
                   <p>🌍 Coleção Imaginando Juntos - solte a imaginação com seus filhos!</p>
                   <p>🎄 Coleção Histórias de Natal - ensine o verdadeiro espirito do natal.</p>
-                  <p class="text-sm text-purple-600 font-bold pt-2 border-t">+ Novas histórias adicionadas mensalmente!</p>
+                  <p class="text-sm text-purple-600 font-bold pt-2 border-t">+ Novas histórias adicionadas periódicamente!</p>
                 </div>
               </div>
             </div>
@@ -480,7 +503,7 @@
 
         <!-- Urgência -->
         <div class="mt-8 bg-red-500/20 border-2 border-red-400 rounded-xl p-4">
-          <p class="text-yellow-300 font-bold">⚠️ ATENÇÃO: Este preço especial é exclusivo para os primeiros membros!</p>
+          <p class="text-yellow-300 font-bold">⚠️ ATENÇÃO: Este preço especial é exclusivo para esse período de lançamento da Herdeiros da Promessa!</p>
           <p class="text-sm text-blue-100 mt-2">Após o período de lançamento, o valor retornará ao preço normal de R$ 99,80</p>
         </div>
       </div>
