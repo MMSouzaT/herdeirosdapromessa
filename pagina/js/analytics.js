@@ -82,4 +82,30 @@
     });
   });
 
+  // Rastreia cliques em botões de compra (Evento de Conversão)
+  document.addEventListener('click', function(e) {
+    const link = e.target.closest('a');
+    if (link && link.href && link.href.includes('pay.cakto.com.br')) {
+      gtag('event', 'purchase_click', {
+        'event_category': 'conversao',
+        'event_label': 'Botao de Compra - Cakto',
+        'value': 19.90,
+        'currency': 'BRL',
+        'button_text': link.textContent.trim(),
+        'page_url': window.location.pathname
+      });
+      
+      // Também envia como evento de conversão do Google Analytics
+      gtag('event', 'begin_checkout', {
+        'currency': 'BRL',
+        'value': 19.90,
+        'items': [{
+          'item_name': 'Colecao Herdeiros da Promessa',
+          'price': 19.90,
+          'quantity': 1
+        }]
+      });
+    }
+  });
+
 })();
