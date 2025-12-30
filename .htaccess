@@ -1,0 +1,39 @@
+# Habilitar RewriteEngine
+RewriteEngine On
+
+# Redirecionar URLs antigas com /pagina/ e .html para as novas URLs limpas
+RewriteCond %{REQUEST_URI} ^/pagina/(.+)\.html$ [NC]
+RewriteRule ^pagina/(.+)\.html$ /$1 [R=301,L]
+
+# URLs amigáveis - redirecionar para os arquivos .html correspondentes
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^adquira_ja$ /pagina/adquira_ja.html [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^conteudo_gratuito$ /pagina/conteudo_gratuito.html [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^produtos$ /pagina/produtos.html [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^historias_biblicas$ /pagina/historias_biblicas.html [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ilustracoes_biblicas$ /pagina/ilustracoes_biblicas.html [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^contato$ /pagina/contato.html [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^sobre_nos$ /pagina/sobre_nos.html [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^obrigado$ /pagina/obrigado.html [L]

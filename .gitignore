@@ -1,0 +1,39 @@
+# Arquivos de documentação e guias de configuração
+GTM_INSTALACAO.md
+GOOGLE_ANALYTICS_SETUP.md
+GUIA_SEO.md
+RASTREAMENTO_CONVERSAO.md
+
+# Node modules (caso use Node.js no futuro)
+node_modules/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Environment variables (caso adicione no futuro)
+.env
+.env.local
+.env.*.local
+
+# Arquivos temporários
+*.tmp
+*.temp
+*~
+
+# Sistema operacional
+Thumbs.db
+.DS_Store
