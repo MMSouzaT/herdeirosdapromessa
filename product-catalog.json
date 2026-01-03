@@ -1,0 +1,43 @@
+{
+  "data": [
+    {
+      "id": "colecao-completa-herdeiros-promessa",
+      "title": "Coleção Completa Herdeiros da Promessa - E-books Bíblicos Infantis",
+      "description": "Coleção completa de histórias bíblicas ilustradas e atividades para colorir. Inclui: Café com Deus Kids, Aprendendo a Orar, Tesouros do Coração, Imaginando Juntos, Histórias de Natal, A Bíblia em Cores, Livros Ilustrados e muito mais.",
+      "availability": "in stock",
+      "condition": "new",
+      "price": "19.90 BRL",
+      "link": "https://herdeirosdapromessa.com.br/adquira_ja",
+      "image_link": "https://herdeirosdapromessa.com.br/pagina/files/favcon.png",
+      "brand": "Herdeiros da Promessa",
+      "google_product_category": "Media > Books",
+      "product_type": "Livros > E-books > Infantis > Cristãos"
+    },
+    {
+      "id": "historias-biblicas-colecao",
+      "title": "E-books de Histórias Bíblicas Ilustradas para Crianças",
+      "description": "Coleção de histórias bíblicas ricamente ilustradas: Café com Deus Kids (devocional diário), Aprendendo a Orar, Tesouros do Coração, Imaginando Juntos e Histórias de Natal.",
+      "availability": "in stock",
+      "condition": "new",
+      "price": "19.90 BRL",
+      "link": "https://herdeirosdapromessa.com.br/historias_biblicas",
+      "image_link": "https://herdeirosdapromessa.com.br/pagina/files/favcon.png",
+      "brand": "Herdeiros da Promessa",
+      "google_product_category": "Media > Books",
+      "product_type": "Livros > E-books > Infantis > Cristãos"
+    },
+    {
+      "id": "ilustracoes-biblicas-colorir",
+      "title": "E-books para Colorir - Ilustrações e Atividades Bíblicas",
+      "description": "Livros bíblicos para colorir e atividades educativas: A Bíblia em Cores (Gênesis), Livros Ilustrados e Atividades de Aprendizado. Material de alta qualidade para impressão.",
+      "availability": "in stock",
+      "condition": "new",
+      "price": "19.90 BRL",
+      "link": "https://herdeirosdapromessa.com.br/ilustracoes_biblicas",
+      "image_link": "https://herdeirosdapromessa.com.br/pagina/files/favcon.png",
+      "brand": "Herdeiros da Promessa",
+      "google_product_category": "Media > Books",
+      "product_type": "Livros > E-books > Atividades > Cristãos"
+    }
+  ]
+}

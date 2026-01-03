@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:g="http://base.google.com/ns/1.0">
+  <channel>
+    <title>Herdeiros da Promessa - Catálogo de Produtos</title>
+    <link>https://herdeirosdapromessa.com.br</link>
+    <description>E-books Bíblicos Infantis Para Ler e Colorir</description>
+    
+    <!-- Produto Principal: Coleção Completa -->
+    <item>
+      <g:id>colecao-completa-herdeiros-promessa</g:id>
+      <g:title>Coleção Completa Herdeiros da Promessa - E-books Bíblicos Infantis</g:title>
+      <g:description>Coleção completa de histórias bíblicas ilustradas e atividades para colorir. Inclui: Café com Deus Kids, Aprendendo a Orar, Tesouros do Coração, Imaginando Juntos, Histórias de Natal, A Bíblia em Cores, Livros Ilustrados e muito mais.</g:description>
+      <g:link>https://herdeirosdapromessa.com.br/adquira_ja</g:link>
+      <g:image_link>https://herdeirosdapromessa.com.br/pagina/files/favcon.png</g:image_link>
+      <g:price>19.90 BRL</g:price>
+      <g:availability>in stock</g:availability>
+      <g:condition>new</g:condition>
+      <g:brand>Herdeiros da Promessa</g:brand>
+      <g:product_type>Livros &gt; E-books &gt; Infantis &gt; Cristãos</g:product_type>
+      <g:google_product_category>Media &gt; Books</g:google_product_category>
+    </item>
+    
+    <!-- Produto: Histórias Bíblicas -->
+    <item>
+      <g:id>historias-biblicas-colecao</g:id>
+      <g:title>E-books de Histórias Bíblicas Ilustradas para Crianças</g:title>
+      <g:description>Coleção de histórias bíblicas ricamente ilustradas: Café com Deus Kids (devocional diário), Aprendendo a Orar, Tesouros do Coração, Imaginando Juntos e Histórias de Natal.</g:description>
+      <g:link>https://herdeirosdapromessa.com.br/historias_biblicas</g:link>
+      <g:image_link>https://herdeirosdapromessa.com.br/pagina/files/favcon.png</g:image_link>
+      <g:price>19.90 BRL</g:price>
+      <g:availability>in stock</g:availability>
+      <g:condition>new</g:condition>
+      <g:brand>Herdeiros da Promessa</g:brand>
+      <g:product_type>Livros &gt; E-books &gt; Infantis &gt; Cristãos</g:product_type>
+      <g:google_product_category>Media &gt; Books</g:google_product_category>
+    </item>
+    
+    <!-- Produto: Ilustrações e Atividades -->
+    <item>
+      <g:id>ilustracoes-biblicas-colorir</g:id>
+      <g:title>E-books para Colorir - Ilustrações e Atividades Bíblicas</g:title>
+      <g:description>Livros bíblicos para colorir e atividades educativas: A Bíblia em Cores (Gênesis), Livros Ilustrados e Atividades de Aprendizado. Material de alta qualidade para impressão.</g:description>
+      <g:link>https://herdeirosdapromessa.com.br/ilustracoes_biblicas</g:link>
+      <g:image_link>https://herdeirosdapromessa.com.br/pagina/files/favcon.png</g:image_link>
+      <g:price>19.90 BRL</g:price>
+      <g:availability>in stock</g:availability>
+      <g:condition>new</g:condition>
+      <g:brand>Herdeiros da Promessa</g:brand>
+      <g:product_type>Livros &gt; E-books &gt; Atividades &gt; Cristãos</g:product_type>
+      <g:google_product_category>Media &gt; Books</g:google_product_category>
+    </item>
+    
+  </channel>
+</rss>
