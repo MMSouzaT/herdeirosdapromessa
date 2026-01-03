@@ -4,6 +4,18 @@ GOOGLE_ANALYTICS_SETUP.md
 GUIA_SEO.md
 RASTREAMENTO_CONVERSAO.md
 
+# Guias de Analytics e Otimização (criados automaticamente)
+LEIA_ISTO_PRIMEIRO.md
+RESUMO_IMPLEMENTACAO.md
+SISTEMA_ANALYTICS_README.md
+GUIA_ANALISE_DADOS.md
+QUERIES_GA4.md
+TOP_10_INSIGHTS.md
+PLANO_90_DIAS.md
+INDICE_COMPLETO.md
+analytics_insights.py
+dashboard-exemplo.html
+
 # Node modules (caso use Node.js no futuro)
 node_modules/
 
