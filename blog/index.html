@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NB6D5WMV');</script>
+    <!-- End Google Tag Manager -->
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Herdeiros da Promessa</title>
+    <meta name="description" content="Blog com conteúdos sobre educação infantil bíblica, dicas para pais cristãos, atividades sem telas e recursos para ensinar a Palavra de Deus às crianças.">
+    <meta name="keywords" content="blog cristão, educação infantil bíblica, criação sem telas, ensino bíblico, dicas para pais cristãos, atividades cristãs para crianças">
+    
+    <!-- Importando Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="icon" href="/pagina/files/favcon.png" type="image/png">
+
+    <!-- Importando Fontes do Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Importando Ícones (Lucide) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Importando CSS Personalizado -->
+    <link rel="stylesheet" href="/pagina/styles.css">
+
+    <!-- Google Analytics -->
+    <script src="/pagina/js/analytics.js" defer></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-gold': '#F2C94C',
+                        'brand-gold-dark': '#D4AF37',
+                        'brand-blue': '#2D5B87',
+                        'brand-cream': '#FDFBF7',
+                        'brand-text': '#4A4A4A',
+                    },
+                    fontFamily: {
+                        serif: ['Lora', 'serif'],
+                        sans: ['Nunito', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .blog-card {
+            transition: all 0.3s ease;
+        }
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .view-grid .blog-posts-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .view-list .blog-posts-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .view-list .blog-card {
+            display: flex;
+            flex-direction: row;
+            max-width: 100%;
+        }
+        
+        .view-list .blog-card .blog-image {
+            width: 250px;
+            height: 200px;
+            flex-shrink: 0;
+        }
+        
+        .view-list .blog-card .blog-content {
+            flex: 1;
+        }
+        
+        .view-grid .blog-card {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .view-grid .blog-card .blog-image {
+            width: 100%;
+            height: 200px;
+        }
+
+        @media (max-width: 768px) {
+            .view-list .blog-card {
+                flex-direction: column;
+            }
+            .view-list .blog-card .blog-image {
+                width: 100%;
+            }
+        }
+
+        .hidden-post {
+            display: none !important;
+        }
+
+        .view-button {
+            transition: all 0.2s ease;
+        }
+
+        .view-button.active {
+            background-color: #2D5B87;
+            color: white;
+        }
+    </style>
+</head>
+<body class="font-sans text-brand-text paper-texture overflow-x-hidden">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NB6D5WMV"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div data-include="nav"></div>
+
+    <!-- Hero Section -->
+    <header class="relative pt-32 pb-16 bg-gradient-to-b from-brand-blue to-blue-900 text-white overflow-hidden">
+        <div class="absolute inset-0 pointer-events-none opacity-20">
+            <div class="absolute top-20 left-10 w-20 h-20 bg-brand-gold rounded-full blur-3xl"></div>
+            <div class="absolute top-40 right-20 w-32 h-32 bg-brand-gold rounded-full blur-3xl"></div>
+            <div class="absolute bottom-20 left-1/3 w-24 h-24 bg-brand-gold rounded-full blur-3xl"></div>
+        </div>
+        
+        <div class="container mx-auto px-6 z-10 text-center relative fade-in-section">
+            <div class="inline-block bg-brand-gold/20 px-4 py-1 rounded-full text-brand-gold text-sm font-bold mb-4 border border-brand-gold/40">
+                ✨ Blog
+            </div>
+            <h1 class="font-serif text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                Educação Cristã <br>e <span class="text-brand-gold italic">Criação Consciente</span>
+            </h1>
+            <p class="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed">
+                Conteúdos sobre educação infantil bíblica, criação sem excessos de tela e recursos práticos para pais que desejam semear a fé no coração dos filhos.
+            </p>
+        </div>
+    </header>
+
+    <!-- Onda decorativa -->
+    <div class="w-full overflow-hidden leading-none">
+        <svg class="block w-[calc(100%+1.3px)] h-[100px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="fill-brand-cream"></path>
+        </svg>
+    </div>
+
+    <!-- Main Content -->
+    <main class="py-16">
+        <div class="container mx-auto px-6">
+            
+            <!-- Controles: Busca e Visualização -->
+            <div class="mb-12 fade-in-section">
+                <div class="flex flex-col md:flex-row gap-4 items-center justify-between bg-white p-6 rounded-xl shadow-md">
+                    <!-- Campo de Busca -->
+                    <div class="w-full md:w-2/3 relative">
+                        <input 
+                            type="text" 
+                            id="searchInput" 
+                            placeholder="Buscar por tema, palavra-chave..." 
+                            class="w-full px-4 py-3 pl-12 border-2 border-gray-200 rounded-lg focus:border-brand-blue focus:outline-none transition-colors"
+                        >
+                        <i data-lucide="search" class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5"></i>
+                    </div>
+                    
+                    <!-- Botões de Visualização -->
+                    <div class="flex gap-2 bg-gray-100 p-1 rounded-lg">
+                        <button 
+                            id="viewGrid" 
+                            class="view-button active flex items-center gap-2 px-4 py-2 rounded-md font-semibold"
+                            aria-label="Visualização em grade"
+                        >
+                            <i data-lucide="grid-3x3" class="w-4 h-4"></i>
+                            <span class="hidden md:inline">Blocos</span>
+                        </button>
+                        <button 
+                            id="viewList" 
+                            class="view-button flex items-center gap-2 px-4 py-2 rounded-md font-semibold"
+                            aria-label="Visualização em lista"
+                        >
+                            <i data-lucide="list" class="w-4 h-4"></i>
+                            <span class="hidden md:inline">Lista</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Mensagem de resultados -->
+                <div id="searchResults" class="mt-4 text-center text-gray-600 hidden">
+                    <p id="resultsText"></p>
+                </div>
+            </div>
+
+            <!-- Container de Posts -->
+            <div id="blogContainer" class="view-grid fade-in-section">
+                <div class="blog-posts-container">
+                    
+                    <!-- Post 1 -->
+                    <article class="blog-card bg-white rounded-xl shadow-md overflow-hidden" data-post>
+                        <div class="blog-image overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=800&auto=format&fit=crop" alt="Criança lendo a Bíblia" class="w-full h-full object-cover">
+                        </div>
+                        <div class="blog-content p-6">
+                            <div class="flex gap-2 mb-3">
+                                <span class="text-xs bg-brand-blue/10 text-brand-blue px-3 py-1 rounded-full font-semibold">Educação Bíblica</span>
+                                <span class="text-xs bg-green-100 text-green-700 px-3 py-1 rounded-full font-semibold">Devocional</span>
+                            </div>
+                            <h2 class="font-serif text-2xl text-brand-blue font-bold mb-3 hover:text-brand-gold-dark transition-colors">
+                                Como Ensinar a Bíblia para Crianças de 2 a 5 Anos
+                            </h2>
+                            <p class="text-gray-600 mb-4 leading-relaxed">
+                                Descubra métodos práticos e eficazes para introduzir as verdades bíblicas na vida dos pequeninos de forma lúdica, respeitando o desenvolvimento cognitivo e emocional dessa faixa etária.
+                            </p>
+                            <div class="flex items-center justify-between text-sm text-gray-500">
+                                <span class="flex items-center gap-2">
+                                    <i data-lucide="calendar" class="w-4 h-4"></i>
+                                    3 de Janeiro, 2026
+                                </span>
+                                <span class="flex items-center gap-2">
+                                    <i data-lucide="clock" class="w-4 h-4"></i>
+                                    5 min de leitura
+                                </span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Post 2 -->
+                    <article class="blog-card bg-white rounded-xl shadow-md overflow-hidden" data-post>
+                        <div class="blog-image overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&auto=format&fit=crop" alt="Família sem telas" class="w-full h-full object-cover">
+                        </div>
+                        <div class="blog-content p-6">
+                            <div class="flex gap-2 mb-3">
+                                <span class="text-xs bg-purple-100 text-purple-700 px-3 py-1 rounded-full font-semibold">Criação Consciente</span>
+                                <span class="text-xs bg-orange-100 text-orange-700 px-3 py-1 rounded-full font-semibold">Telas</span>
+                            </div>
+                            <h2 class="font-serif text-2xl text-brand-blue font-bold mb-3 hover:text-brand-gold-dark transition-colors">
+                                5 Alternativas às Telas para Ocupar as Crianças em Casa
+                            </h2>
+                            <p class="text-gray-600 mb-4 leading-relaxed">
+                                Ideias práticas e criativas para entreter seus filhos sem depender de tablets, celulares ou televisão. Atividades que estimulam a imaginação, criatividade e conexão familiar.
+                            </p>
+                            <div class="flex items-center justify-between text-sm text-gray-500">
+                                <span class="flex items-center gap-2">
+                                    <i data-lucide="calendar" class="w-4 h-4"></i>
+                                    2 de Janeiro, 2026
+                                </span>
+                                <span class="flex items-center gap-2">
+                                    <i data-lucide="clock" class="w-4 h-4"></i>
+                                    7 min de leitura
+                                </span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Post 3 -->
+                    <article class="blog-card bg-white rounded-xl shadow-md overflow-hidden" data-post>
+                        <div class="blog-image overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1503614472-8c93d56e92ce?w=800&auto=format&fit=crop" alt="Oração em família" class="w-full h-full object-cover">
+                        </div>
+                        <div class="blog-content p-6">
+                            <div class="flex gap-2 mb-3">
+                                <span class="text-xs bg-brand-blue/10 text-brand-blue px-3 py-1 rounded-full font-semibold">Vida Espiritual</span>
+                                <span class="text-xs bg-pink-100 text-pink-700 px-3 py-1 rounded-full font-semibold">Família</span>
+                            </div>
+                            <h2 class="font-serif text-2xl text-brand-blue font-bold mb-3 hover:text-brand-gold-dark transition-colors">
+                                Cultivando o Hábito da Oração na Rotina Familiar
+                            </h2>
+                            <p class="text-gray-600 mb-4 leading-relaxed">
+                                Aprenda a criar momentos especiais de oração em família, ensinando seus filhos desde cedo a conversar com Deus de forma natural e espontânea no dia a dia.
+                            </p>
+                            <div class="flex items-center justify-between text-sm text-gray-500">
+                                <span class="flex items-center gap-2">
+                                    <i data-lucide="calendar" class="w-4 h-4"></i>
+                                    1 de Janeiro, 2026
+                                </span>
+                                <span class="flex items-center gap-2">
+                                    <i data-lucide="clock" class="w-4 h-4"></i>
+                                    6 min de leitura
+                                </span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Post 4 -->
+                    <article class="blog-card bg-white rounded-xl shadow-md overflow-hidden" data-post>
+                        <div class="blog-image overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&auto=format&fit=crop" alt="Criança brincando criativo" class="w-full h-full object-cover">
+                        </div>
+                        <div class="blog-content p-6">
+                            <div class="flex gap-2 mb-3">
+                                <span class="text-xs bg-purple-100 text-purple-700 px-3 py-1 rounded-full font-semibold">Criação Consciente</span>
+                                <span class="text-xs bg-green-100 text-green-700 px-3 py-1 rounded-full font-semibold">Desenvolvimento</span>
+                            </div>
+                            <h2 class="font-serif text-2xl text-brand-blue font-bold mb-3 hover:text-brand-gold-dark transition-colors">
+                                O Impacto das Telas no Desenvolvimento Infantil: O Que Você Precisa Saber
+                            </h2>
+                            <p class="text-gray-600 mb-4 leading-relaxed">
+                                Entenda como o uso excessivo de telas pode afetar o desenvolvimento cognitivo, emocional e social das crianças, e como estabelecer limites saudáveis de forma prática.
+                            </p>
+                            <div class="flex items-center justify-between text-sm text-gray-500">
+                                <span class="flex items-center gap-2">
+                                    <i data-lucide="calendar" class="w-4 h-4"></i>
+                                    30 de Dezembro, 2025
+                                </span>
+                                <span class="flex items-center gap-2">
+                                    <i data-lucide="clock" class="w-4 h-4"></i>
+                                    8 min de leitura
+                                </span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Post 5 -->
+                    <article class="blog-card bg-white rounded-xl shadow-md overflow-hidden" data-post>
+                        <div class="blog-image overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1503095396549-807759245b35?w=800&auto=format&fit=crop" alt="Histórias bíblicas" class="w-full h-full object-cover">
+                        </div>
+                        <div class="blog-content p-6">
+                            <div class="flex gap-2 mb-3">
+                                <span class="text-xs bg-brand-blue/10 text-brand-blue px-3 py-1 rounded-full font-semibold">Educação Bíblica</span>
+                                <span class="text-xs bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full font-semibold">Dicas</span>
+                            </div>
+                            <h2 class="font-serif text-2xl text-brand-blue font-bold mb-3 hover:text-brand-gold-dark transition-colors">
+                                7 Histórias Bíblicas Essenciais para Contar aos Seus Filhos
+                            </h2>
+                            <p class="text-gray-600 mb-4 leading-relaxed">
+                                Conheça as narrativas bíblicas fundamentais que toda criança deveria ouvir, com dicas de como adaptá-las para diferentes idades e torná-las ainda mais envolventes.
+                            </p>
+                            <div class="flex items-center justify-between text-sm text-gray-500">
+                                <span class="flex items-center gap-2">
+                                    <i data-lucide="calendar" class="w-4 h-4"></i>
+                                    28 de Dezembro, 2025
+                                </span>
+                                <span class="flex items-center gap-2">
+                                    <i data-lucide="clock" class="w-4 h-4"></i>
+                                    10 min de leitura
+                                </span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Post 6 -->
+                    <article class="blog-card bg-white rounded-xl shadow-md overflow-hidden" data-post>
+                        <div class="blog-image overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&auto=format&fit=crop" alt="Brincadeiras ao ar livre" class="w-full h-full object-cover">
+                        </div>
+                        <div class="blog-content p-6">
+                            <div class="flex gap-2 mb-3">
+                                <span class="text-xs bg-purple-100 text-purple-700 px-3 py-1 rounded-full font-semibold">Criação Consciente</span>
+                                <span class="text-xs bg-blue-100 text-blue-700 px-3 py-1 rounded-full font-semibold">Atividades</span>
+                            </div>
+                            <h2 class="font-serif text-2xl text-brand-blue font-bold mb-3 hover:text-brand-gold-dark transition-colors">
+                                Brincadeiras ao Ar Livre que Fortalecem o Vínculo Familiar
+                            </h2>
+                            <p class="text-gray-600 mb-4 leading-relaxed">
+                                Redescubra a alegria de brincar fora de casa com atividades simples que não exigem telas, promovem exercício físico e criam memórias inesquecíveis em família.
+                            </p>
+                            <div class="flex items-center justify-between text-sm text-gray-500">
+                                <span class="flex items-center gap-2">
+                                    <i data-lucide="calendar" class="w-4 h-4"></i>
+                                    27 de Dezembro, 2025
+                                </span>
+                                <span class="flex items-center gap-2">
+                                    <i data-lucide="clock" class="w-4 h-4"></i>
+                                    6 min de leitura
+                                </span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Post 7 -->
+                    <article class="blog-card bg-white rounded-xl shadow-md overflow-hidden" data-post>
+                        <div class="blog-image overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1531983412531-1f49a365ffed?w=800&auto=format&fit=crop" alt="Criança estudando Bíblia" class="w-full h-full object-cover">
+                        </div>
+                        <div class="blog-content p-6">
+                            <div class="flex gap-2 mb-3">
+                                <span class="text-xs bg-brand-blue/10 text-brand-blue px-3 py-1 rounded-full font-semibold">Educação Bíblica</span>
+                                <span class="text-xs bg-red-100 text-red-700 px-3 py-1 rounded-full font-semibold">Alfabetização</span>
+                            </div>
+                            <h2 class="font-serif text-2xl text-brand-blue font-bold mb-3 hover:text-brand-gold-dark transition-colors">
+                                Alfabetização Cristã: Unindo Letras e Fé na Primeira Infância
+                            </h2>
+                            <p class="text-gray-600 mb-4 leading-relaxed">
+                                Aprenda como integrar o ensino das letras com princípios cristãos, tornando o processo de alfabetização uma experiência rica em valores e significado espiritual.
+                            </p>
+                            <div class="flex items-center justify-between text-sm text-gray-500">
+                                <span class="flex items-center gap-2">
+                                    <i data-lucide="calendar" class="w-4 h-4"></i>
+                                    26 de Dezembro, 2025
+                                </span>
+                                <span class="flex items-center gap-2">
+                                    <i data-lucide="clock" class="w-4 h-4"></i>
+                                    9 min de leitura
+                                </span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Post 8 -->
+                    <article class="blog-card bg-white rounded-xl shadow-md overflow-hidden" data-post>
+                        <div class="blog-image overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1503919005314-30d93d07d823?w=800&auto=format&fit=crop" alt="Momento em família" class="w-full h-full object-cover">
+                        </div>
+                        <div class="blog-content p-6">
+                            <div class="flex gap-2 mb-3">
+                                <span class="text-xs bg-pink-100 text-pink-700 px-3 py-1 rounded-full font-semibold">Família</span>
+                                <span class="text-xs bg-orange-100 text-orange-700 px-3 py-1 rounded-full font-semibold">Rotina</span>
+                            </div>
+                            <h2 class="font-serif text-2xl text-brand-blue font-bold mb-3 hover:text-brand-gold-dark transition-colors">
+                                Como Criar uma Rotina Familiar Centrada em Deus
+                            </h2>
+                            <p class="text-gray-600 mb-4 leading-relaxed">
+                                Dicas práticas para estruturar o dia da família incluindo momentos de oração, louvor e ensino bíblico, mesmo em meio à correria do cotidiano moderno.
+                            </p>
+                            <div class="flex items-center justify-between text-sm text-gray-500">
+                                <span class="flex items-center gap-2">
+                                    <i data-lucide="calendar" class="w-4 h-4"></i>
+                                    25 de Dezembro, 2025
+                                </span>
+                                <span class="flex items-center gap-2">
+                                    <i data-lucide="clock" class="w-4 h-4"></i>
+                                    7 min de leitura
+                                </span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Post 9 -->
+                    <article class="blog-card bg-white rounded-xl shadow-md overflow-hidden" data-post>
+                        <div class="blog-image overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1503891617560-5b8c2e28cbf6?w=800&auto=format&fit=crop" alt="Criança com valores" class="w-full h-full object-cover">
+                        </div>
+                        <div class="blog-content p-6">
+                            <div class="flex gap-2 mb-3">
+                                <span class="text-xs bg-brand-blue/10 text-brand-blue px-3 py-1 rounded-full font-semibold">Valores</span>
+                                <span class="text-xs bg-green-100 text-green-700 px-3 py-1 rounded-full font-semibold">Caráter</span>
+                            </div>
+                            <h2 class="font-serif text-2xl text-brand-blue font-bold mb-3 hover:text-brand-gold-dark transition-colors">
+                                Ensinando Valores Cristãos Através do Exemplo Diário
+                            </h2>
+                            <p class="text-gray-600 mb-4 leading-relaxed">
+                                Descubra como suas atitudes e escolhas cotidianas podem ser a melhor ferramenta para ensinar amor, bondade, gratidão e outros princípios cristãos aos seus filhos.
+                            </p>
+                            <div class="flex items-center justify-between text-sm text-gray-500">
+                                <span class="flex items-center gap-2">
+                                    <i data-lucide="calendar" class="w-4 h-4"></i>
+                                    24 de Dezembro, 2025
+                                </span>
+                                <span class="flex items-center gap-2">
+                                    <i data-lucide="clock" class="w-4 h-4"></i>
+                                    8 min de leitura
+                                </span>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+
+            <!-- Mensagem quando não há resultados -->
+            <div id="noResults" class="hidden text-center py-16">
+                <i data-lucide="search-x" class="w-16 h-16 text-gray-400 mx-auto mb-4"></i>
+                <h3 class="font-serif text-2xl text-gray-700 mb-2">Nenhum resultado encontrado</h3>
+                <p class="text-gray-500">Tente buscar com outras palavras-chave.</p>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brand-blue text-white py-12 mt-20">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <h3 class="font-serif font-bold text-xl mb-4 text-brand-gold">Herdeiros da Promessa</h3>
+                    <p class="text-blue-200 text-sm leading-relaxed">
+                        Semeando a Palavra de Deus no coração das crianças através de histórias bíblicas, recursos educativos e conteúdos que fortalecem a fé em família.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Links Úteis</h4>
+                    <ul class="space-y-2 text-blue-200 text-sm">
+                        <li><a href="/produtos" class="hover:text-brand-gold transition-colors">Produtos</a></li>
+                        <li><a href="/blog" class="hover:text-brand-gold transition-colors">Blog</a></li>
+                        <li><a href="/conteudo_gratuito" class="hover:text-brand-gold transition-colors">Conteúdo Gratuito</a></li>
+                        <li><a href="/sobre-nos" class="hover:text-brand-gold transition-colors">Sobre Nós</a></li>
+                        <li><a href="/contato" class="hover:text-brand-gold transition-colors">Contato</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Conecte-se</h4>
+                    <p class="text-blue-200 text-sm mb-4">Receba conteúdos exclusivos e novidades sobre educação cristã infantil.</p>
+                    <a href="/contato" class="inline-block bg-brand-gold text-brand-blue px-6 py-2 rounded-lg font-bold hover:bg-yellow-400 transition-colors">
+                        Entre em Contato
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-blue-800 pt-6 text-center text-blue-200 text-sm">
+                <p>&copy; 2026 Herdeiros da Promessa. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botão Voltar ao Topo -->
+    <button id="backToTop" class="fixed bottom-8 right-8 bg-brand-gold text-brand-blue p-4 rounded-full shadow-lg hover:bg-yellow-400 transition-all opacity-0 invisible z-50">
+        <i data-lucide="arrow-up" class="w-6 h-6"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="/pagina/js/load-nav.js"></script>
+    <script>
+        // Inicializar ícones Lucide
+        lucide.createIcons();
+
+        // Função de busca
+        const searchInput = document.getElementById('searchInput');
+        const blogPosts = document.querySelectorAll('[data-post]');
+        const searchResults = document.getElementById('searchResults');
+        const resultsText = document.getElementById('resultsText');
+        const noResults = document.getElementById('noResults');
+
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase().trim();
+            let visibleCount = 0;
+
+            blogPosts.forEach(post => {
+                const postContent = post.textContent.toLowerCase();
+                
+                if (searchTerm === '' || postContent.includes(searchTerm)) {
+                    post.classList.remove('hidden-post');
+                    visibleCount++;
+                } else {
+                    post.classList.add('hidden-post');
+                }
+            });
+
+            // Exibir mensagem de resultados
+            if (searchTerm === '') {
+                searchResults.classList.add('hidden');
+                noResults.classList.add('hidden');
+            } else {
+                if (visibleCount === 0) {
+                    noResults.classList.remove('hidden');
+                    searchResults.classList.add('hidden');
+                } else {
+                    noResults.classList.add('hidden');
+                    searchResults.classList.remove('hidden');
+                    resultsText.textContent = `${visibleCount} ${visibleCount === 1 ? 'artigo encontrado' : 'artigos encontrados'}`;
+                }
+            }
+        });
+
+        // Toggle entre visualização em grid e lista
+        const viewGrid = document.getElementById('viewGrid');
+        const viewList = document.getElementById('viewList');
+        const blogContainer = document.getElementById('blogContainer');
+
+        viewGrid.addEventListener('click', function() {
+            blogContainer.classList.remove('view-list');
+            blogContainer.classList.add('view-grid');
+            viewGrid.classList.add('active');
+            viewList.classList.remove('active');
+        });
+
+        viewList.addEventListener('click', function() {
+            blogContainer.classList.remove('view-grid');
+            blogContainer.classList.add('view-list');
+            viewList.classList.add('active');
+            viewGrid.classList.remove('active');
+        });
+
+        // Botão Voltar ao Topo
+        const backToTop = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTop.style.opacity = '1';
+                backToTop.style.visibility = 'visible';
+            } else {
+                backToTop.style.opacity = '0';
+                backToTop.style.visibility = 'hidden';
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Fade-in ao scroll
+        const faders = document.querySelectorAll('.fade-in-section');
+        const appearOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -100px 0px"
+        };
+
+        const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('is-visible');
+                appearOnScroll.unobserve(entry.target);
+            });
+        }, appearOptions);
+
+        faders.forEach(fader => {
+            appearOnScroll.observe(fader);
+        });
+    </script>
+</body>
+</html>
