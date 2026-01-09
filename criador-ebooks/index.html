@@ -914,7 +914,7 @@
         // Gerar estrutura do e-book com Gemini
         async function generateEbookStructure(theme, ageRange, numPages, apiKey) {
             const geminiModel = localStorage.getItem('gemini_model') || 'gemini-1.5-flash';
-            const url = `https://generativelanguage.googleapis.com/v1beta/models/${geminiModel}:generateContent?key=${apiKey}`;
+            const url = `https://generativelanguage.googleapis.com/v1/models/${geminiModel}:generateContent?key=${apiKey}`;
             
             const response = await fetch(url, {
                 method: 'POST',
