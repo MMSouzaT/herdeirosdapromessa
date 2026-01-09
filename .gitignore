@@ -54,3 +54,7 @@ Thumbs.db
 # Ferramenta interna com credenciais
 criador-ebooks/config.js
 criador-ebooks/credentials.js
+criador-ebooks/COMO_USAR_GEMINI.md
+.gitignore
+criador-ebooks/README.md
+criador-ebooks/MIGRACAO_GEMINI.md
