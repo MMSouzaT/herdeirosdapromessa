@@ -596,9 +596,9 @@
                 <div class="form-group">
                     <label for="geminiModel">Modelo Gemini:</label>
                     <select id="geminiModel">
-                        <option value="gemini-1.5-flash">Gemini 1.5 Flash (Recomendado - Gratuito)</option>
-                        <option value="gemini-1.5-pro">Gemini 1.5 Pro (Mais poderoso)</option>
-                        <option value="gemini-pro">Gemini Pro</option>
+                        <option value="gemini-1.5-flash-latest">Gemini 1.5 Flash (Recomendado - Gratuito)</option>
+                        <option value="gemini-1.5-pro-latest">Gemini 1.5 Pro (Mais poderoso)</option>
+                        <option value="gemini-pro">Gemini Pro (Versão anterior)</option>
                     </select>
                     <small style="display: block; margin-top: 5px; color: #666;">
                         Flash é gratuito e muito rápido. Excelente para começar!
@@ -746,7 +746,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Configurar modelo padrão se não existir
             if (!localStorage.getItem('gemini_model')) {
-                localStorage.setItem('gemini_model', 'gemini-1.5-flash');
+                localStorage.setItem('gemini_model', 'gemini-1.5-flash-latest');
             }
             if (!localStorage.getItem('image_provider')) {
                 localStorage.setItem('image_provider', 'pollinations');
@@ -786,7 +786,7 @@
 
         function loadApiKeys() {
             const geminiKey = localStorage.getItem('gemini_key');
-            const geminiModel = localStorage.getItem('gemini_model') || 'gemini-1.5-flash';
+            const geminiModel = localStorage.getItem('gemini_model') || 'gemini-1.5-flash-latest';
             const imageProvider = localStorage.getItem('image_provider') || 'pollinations';
             if (geminiKey) {
                 document.getElementById('geminiKey').value = geminiKey;
@@ -913,8 +913,8 @@
 
         // Gerar estrutura do e-book com Gemini
         async function generateEbookStructure(theme, ageRange, numPages, apiKey) {
-            const geminiModel = localStorage.getItem('gemini_model') || 'gemini-1.5-flash';
-            const url = `https://generativelanguage.googleapis.com/v1/models/${geminiModel}:generateContent?key=${apiKey}`;
+            const geminiModel = localStorage.getItem('gemini_model') || 'gemini-1.5-flash-latest';
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/${geminiModel}:generateContent?key=${apiKey}`;
             
             const response = await fetch(url, {
                 method: 'POST',
