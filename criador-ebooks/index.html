@@ -19,6 +19,95 @@
             padding: 20px;
         }
 
+        /* Tela de Login */
+        #loginScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+
+        #loginScreen.hidden {
+            display: none;
+        }
+
+        .login-box {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        .login-box h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 2em;
+        }
+
+        .login-box p {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .login-box input[type="password"] {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            transition: border-color 0.3s;
+        }
+
+        .login-box input[type="password"]:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .login-box button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .login-box button:hover {
+            transform: translateY(-2px);
+        }
+
+        .login-error {
+            color: #dc3545;
+            margin-top: 15px;
+            display: none;
+        }
+
+        .login-error.show {
+            display: block;
+        }
+
+        #mainApp {
+            display: none;
+        }
+
+        #mainApp.show {
+            display: block;
+        }
+
         .container {
             max-width: 1400px;
             margin: 0 auto;
@@ -393,6 +482,19 @@
     </style>
 </head>
 <body>
+    <!-- Tela de Login -->
+    <div id="loginScreen">
+        <div class="login-box">
+            <h1>🔒 Acesso Restrito</h1>
+            <p>Criador de E-books Bíblicos</p>
+            <input type="password" id="passwordInput" placeholder="Digite a senha" onkeypress="if(event.key==='Enter') checkPassword()">
+            <button onclick="checkPassword()">Entrar</button>
+            <div class="login-error" id="loginError">❌ Senha incorreta!</div>
+        </div>
+    </div>
+
+    <!-- Aplicação Principal -->
+    <div id="mainApp">
     <div class="container">
         <div class="header">
             <h1>🎨 Criador de E-books Bíblicos</h1>
@@ -485,6 +587,17 @@
                         Obtenha em: <a href="https://platform.openai.com/api-keys" target="_blank">platform.openai.com/api-keys</a>
                     </small>
                 </div>
+                <div class="form-group">
+                    <label for="gptModel">Modelo GPT:</label>
+                    <select id="gptModel">
+                        <option value="gpt-3.5-turbo">GPT-3.5 Turbo (Recomendado - Mais Barato)</option>
+                        <option value="gpt-4">GPT-4 (Requer acesso especial)</option>
+                        <option value="gpt-4-turbo-preview">GPT-4 Turbo</option>
+                    </select>
+                    <small style="display: block; margin-top: 5px; color: #666;">
+                        Use GPT-3.5 se não tiver acesso ao GPT-4
+                    </small>
+                </div>
                 <button class="btn" onclick="saveApiKeys()">💾 Salvar Configurações</button>
             </div>
 
@@ -569,8 +682,42 @@
             </div>
         </div>
     </div>
+    </div>
 
     <script>
+        // Senha de acesso
+        const SENHA_CORRETA = 'herdeiros2026'; // Altere aqui para sua senha
+
+        function checkPassword() {
+            const senha = document.getElementById('passwordInput').value;
+            
+            if (senha === SENHA_CORRETA) {
+                // Salvar sessão
+                sessionStorage.setItem('authenticated', 'true');
+                // Mostrar aplicação
+                document.getElementById('loginScreen').classList.add('hidden');
+                document.getElementById('mainApp').classList.add('show');
+            } else {
+                // Mostrar erro
+                document.getElementById('loginError').classList.add('show');
+                document.getElementById('passwordInput').value = '';
+                document.getElementById('passwordInput').focus();
+                
+                // Esconder erro após 3 segundos
+                setTimeout(() => {
+                    document.getElementById('loginError').classList.remove('show');
+                }, 3000);
+            }
+        }
+
+        // Verificar se já está autenticado
+        window.addEventListener('DOMContentLoaded', function() {
+            if (sessionStorage.getItem('authenticated') === 'true') {
+                document.getElementById('loginScreen').classList.add('hidden');
+                document.getElementById('mainApp').classList.add('show');
+            }
+        });
+
         // Estado global
         let generatedEbooks = [];
         let canvas, ctx;
@@ -580,6 +727,11 @@
 
         // Inicialização
         document.addEventListener('DOMContentLoaded', function() {
+            // Configurar modelo padrão se não existir
+            if (!localStorage.getItem('gpt_model')) {
+                localStorage.setItem('gpt_model', 'gpt-3.5-turbo');
+            }
+            
             loadApiKeys();
             loadEbooks();
             initCanvas();
@@ -604,15 +756,19 @@
         // Salvar/Carregar API Keys
         function saveApiKeys() {
             const openaiKey = document.getElementById('openaiKey').value;
+            const gptModel = document.getElementById('gptModel').value;
             localStorage.setItem('openai_key', openaiKey);
+            localStorage.setItem('gpt_model', gptModel);
             alert('✅ Configurações salvas com sucesso!');
         }
 
         function loadApiKeys() {
             const openaiKey = localStorage.getItem('openai_key');
+            const gptModel = localStorage.getItem('gpt_model') || 'gpt-3.5-turbo';
             if (openaiKey) {
                 document.getElementById('openaiKey').value = openaiKey;
             }
+            document.getElementById('gptModel').value = gptModel;
         }
 
         function addLog(message, type = 'info') {
@@ -733,6 +889,7 @@
 
         // Gerar estrutura do e-book com GPT
         async function generateEbookStructure(theme, ageRange, numPages, apiKey) {
+            const gptModel = localStorage.getItem('gpt_model') || 'gpt-3.5-turbo';
             const response = await fetch('https://api.openai.com/v1/chat/completions', {
                 method: 'POST',
                 headers: {
@@ -740,7 +897,7 @@
                     'Authorization': `Bearer ${apiKey}`
                 },
                 body: JSON.stringify({
-                    model: 'gpt-4',
+                    model: gptModel,
                     messages: [{
                         role: 'user',
                         content: `Crie uma estrutura completa para um e-book infantil bíblico sobre "${theme}" para crianças de ${ageRange} anos com ${numPages} páginas.

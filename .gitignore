@@ -50,3 +50,7 @@ yarn-error.log*
 # Sistema operacional
 Thumbs.db
 .DS_Store
+
+# Ferramenta interna com credenciais
+criador-ebooks/config.js
+criador-ebooks/credentials.js
